@@ -22,6 +22,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="button.c" />
+    <ClCompile Include="circle.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="processInput.c" />
     <ClCompile Include="render.c" />
@@ -29,6 +31,8 @@
     <ClCompile Include="update.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="button.h" />
+    <ClInclude Include="circle.h" />
     <ClInclude Include="globals.h" />
     <ClInclude Include="processInput.h" />
     <ClInclude Include="render.h" />

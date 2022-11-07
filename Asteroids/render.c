@@ -3,7 +3,7 @@
 //
 
 void render(ALLEGRO_DISPLAY* display, const double lag) {
-	al_clear_to_color(al_map_rgb(0, 0, 0));
+	al_clear_to_color(al_map_rgb(255, 255, 255));
 
 	switch (sceneID)
 	{
@@ -19,6 +19,15 @@ void render(ALLEGRO_DISPLAY* display, const double lag) {
 		break;
 	default:
 		break;
+	}
+
+	if (displayX > 0) {
+		al_draw_filled_rectangle(0, 0, displayX, displayHeight, al_map_rgb(0, 0, 0));
+		al_draw_filled_rectangle(displayWidth + displayX, 0, displayWidth + displayX*2, displayHeight, al_map_rgb(0, 0, 0));
+	}
+	else if (displayY > 0) {
+		al_draw_filled_rectangle(0, 0, displayWidth, displayY, al_map_rgb(0, 0, 0));
+		al_draw_filled_rectangle(0, displayHeight + displayY, displayWidth, displayHeight + displayY*2, al_map_rgb(0, 0, 0));
 	}
 
 	al_flip_display();

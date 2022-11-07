@@ -49,7 +49,7 @@ int main(void) {
 	sceneID = 0;
 	double time = 0;
 	const double SPT = 1 / 120.0;
-	double FPS[10];
+	double FPS[FPSn];
 	int FPSi = 0;
 	double lastFrameTime = al_current_time(), deltaFrameTime = 0, accumulatedTime = 0;
 
@@ -68,13 +68,13 @@ int main(void) {
 		}
 
 		render(display, accumulatedTime);
-
+		
 		FPS[FPSi] = 1 / deltaFrameTime;
 		FPSi = (FPSi + 1) % FPSn;
 		double MFPS = 0;
 		for (int i = 0; i < FPSn; i++) MFPS += FPS[1];
 		MFPS /= FPSn;
-		char title[32];
+		char title[50];
 		snprintf(title, 32, "Asteroids FPS:%4.2lf", MFPS);
 		al_set_window_title(display, title);
 	}
