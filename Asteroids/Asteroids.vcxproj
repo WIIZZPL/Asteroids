@@ -22,22 +22,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="button.c" />
-    <ClCompile Include="circle.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="processInput.c" />
-    <ClCompile Include="render.c" />
-    <ClCompile Include="sceneSwitch.c" />
-    <ClCompile Include="update.c" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="button.h" />
-    <ClInclude Include="circle.h" />
-    <ClInclude Include="globals.h" />
-    <ClInclude Include="processInput.h" />
-    <ClInclude Include="render.h" />
-    <ClInclude Include="sceneSwitch.h" />
-    <ClInclude Include="update.h" />
+    <ClInclude Include="App.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
