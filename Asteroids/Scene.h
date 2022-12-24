@@ -6,7 +6,7 @@ class Scene {
 private:
 
 public:
-	virtual void processInput();
-	virtual void update(double t, double dt);
-	virtual void render(ALLEGRO_DISPLAY* display, double lag);
+	virtual void processInput() = 0;
+	virtual void update(double t, double dt) = 0;
+	virtual void render(ALLEGRO_DISPLAY* display, double lag) = 0;
 };
