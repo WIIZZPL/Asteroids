@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\Scenes">
+      <UniqueIdentifier>{654d5c83-ebaf-4b95-80b8-39faa51cfd4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Scenes">
+      <UniqueIdentifier>{8cbca22c-c9be-4739-8dff-d4b3a733d056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Objects">
+      <UniqueIdentifier>{bfdd91fe-4622-4331-bafa-3f06b806944f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Objects">
+      <UniqueIdentifier>{698c7e77-2415-421d-b13e-a1b5b4750264}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -25,18 +37,27 @@
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki źródłowe\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Pliki źródłowe\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>Pliki nagłówkowe</Filter>
+      <Filter>Pliki nagłówkowe\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Pliki nagłówkowe\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Pliki nagłówkowe\Objects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="HyperspaceBold-GM0g.ttf" />
   </ItemGroup>
 </Project>
