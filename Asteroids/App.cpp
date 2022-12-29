@@ -3,8 +3,6 @@
 App* App::instance;
 unsigned int App::displayWidth = 1280;
 unsigned int App::displayHeight = 720;
-unsigned int App::displayX = 0;
-unsigned int App::displayY = 0;
 
 App::App(){
 	try {
@@ -14,7 +12,6 @@ App::App(){
 		if (!al_install_keyboard()) "keyboard";
 		if (!al_install_mouse()) "mouse";
 
-		al_set_new_display_flags(ALLEGRO_RESIZABLE);
 		display = al_create_display(displayWidth, displayHeight);
 		if (!display) throw "display";
 
@@ -43,7 +40,7 @@ App::App(){
 	currentScene = 0;
 	nextScene = 0;
 
-	scene = new GameScene();
+	scene = new GameScene(displayWidth, displayHeight);
 }
 
 App* App::getInstance(){
@@ -73,12 +70,12 @@ void App::run() {
 		processInput();
 
 		while (accumulatedTime >= SPT) {
-			update(totalTime, SPT);
+			update(SPT);
 			accumulatedTime -= SPT;
 			totalTime += SPT;
 		}
 
-		render(display, accumulatedTime);
+		render(accumulatedTime);
 	}
 }
 
@@ -88,14 +85,6 @@ void App::setNextScene(unsigned int nextScene){
 
 void App::stop() {
 	running = false;
-}
-
-unsigned int App::getDisplayX() {
-	return App::displayX;
-}
-
-unsigned int App::getDisplayY() {
-	return App::displayY;
 }
 
 unsigned int App::getDisplayWidth() {
@@ -112,7 +101,7 @@ void App::sceneSwitch() {
 
 		switch(nextScene){
 		case GAME_SCENE_ID:
-			scene = new GameScene();
+			scene = new GameScene(displayWidth, displayHeight);
 		default:
 			exit(555);
 		}
@@ -128,38 +117,19 @@ void App::processInput() {
 		if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			stop();
 		}
-		else if (event.type == ALLEGRO_EVENT_DISPLAY_RESIZE) {
-			al_acknowledge_resize(display);
-			displayWidth = al_get_display_width(display);
-			displayHeight = al_get_display_height(display);
-			displayX = std::max(0.0, (displayWidth - displayHeight * aspectRatio) / 2);
-			displayY = std::max(0.0, (displayHeight - displayWidth / aspectRatio) / 2);
-			displayWidth -= 2 * displayX;
-			displayHeight -= 2 * displayY;
-		}
 
 		scene->processInput(event);
 	}
 }
 
-void App::update(double t, double dt) {
-	scene->update(t, dt);
+void App::update(double dt) {
+	scene->update(dt);
 }
 
-void App::render(ALLEGRO_DISPLAY* display, double lag) {
+void App::render(double lag) {
 	al_clear_to_color(al_map_rgb(255, 0, 255));
 
-	scene->render(display, lag);
-
-	static ALLEGRO_COLOR const black = al_map_rgb(0, 0, 0);
-	if (displayX) {
-		al_draw_filled_rectangle(0, 0, displayX, displayHeight, black);
-		al_draw_filled_rectangle(displayX + displayWidth, 0, displayX * 2 + displayWidth, displayHeight, black);
-	}
-	else if (displayY) {
-		al_draw_filled_rectangle(0, 0, displayWidth, displayY, black);
-		al_draw_filled_rectangle(0, displayY + displayHeight, displayWidth, displayY * 2 + displayHeight, black);
-	}
+	scene->render(lag);
 
 	al_flip_display();
 

@@ -7,6 +7,6 @@ private:
 
 public:
 	virtual void processInput(ALLEGRO_EVENT& event) = 0;
-	virtual void update(double t, double dt) = 0;
-	virtual void render(ALLEGRO_DISPLAY* display, double lag) = 0;
+	virtual void update(double dt) = 0;
+	virtual void render(double lag) = 0;
 };

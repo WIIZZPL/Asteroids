@@ -42,6 +42,12 @@
     <ClCompile Include="Vector2D.cpp">
       <Filter>Pliki źródłowe\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Pliki źródłowe\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>Pliki źródłowe\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -54,6 +60,12 @@
       <Filter>Pliki nagłówkowe\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Vector2D.h">
+      <Filter>Pliki nagłówkowe\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Pliki nagłówkowe\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon.h">
       <Filter>Pliki nagłówkowe\Objects</Filter>
     </ClInclude>
   </ItemGroup>

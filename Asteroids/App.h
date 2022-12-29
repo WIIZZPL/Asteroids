@@ -24,7 +24,7 @@ private:
 	static App* instance;
 	App();
 
-	static unsigned int displayWidth, displayHeight, displayX, displayY;
+	static unsigned int displayWidth, displayHeight;
 	ALLEGRO_DISPLAY* display;
 
 	double FPS[FPSn]{};
@@ -41,8 +41,8 @@ private:
 
 	void sceneSwitch();
 	void processInput();
-	void update(double t, double dt);
-	void render(ALLEGRO_DISPLAY* dispay, double lag);
+	void update(double dt);
+	void render(double lag);
 
 public:
 	static App* getInstance();
@@ -51,9 +51,7 @@ public:
 	App(App&& app) = delete;
 	App const& operator=(App&& app) = delete;
 	~App();
-	
-	static unsigned int getDisplayX();
-	static unsigned int getDisplayY();
+
 	static unsigned int getDisplayWidth();
 	static unsigned int getDisplayHeight();
 

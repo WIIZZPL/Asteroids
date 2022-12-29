@@ -25,11 +25,15 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Polygon.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
