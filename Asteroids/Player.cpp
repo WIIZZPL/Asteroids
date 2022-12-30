@@ -1,6 +1,6 @@
 #include "Player.h"
 #include <stdio.h>
-#define acceleration 2000
+#define acceleration 1500
 #define drag 0.98
 #define rotate_speed 5
 

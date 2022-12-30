@@ -17,7 +17,7 @@ Polygon::Polygon(int size, Vector2D* points) : size(size), points(points) {
 }
 
 Polygon::~Polygon(){
-	delete[] points;
+	delete[size] points;
 	delete O;
 }
 
@@ -90,8 +90,9 @@ const Vector2D Polygon::getPointClosestFrom(const Vector2D& P, float angle, cons
 	return M;
 }
 
-bool Polygon::isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight){
-	Vector2D R(displayWidth / 2, displayHeight / 2);
-	Vector2D M = getPointClosestFrom(P, angle, R);
-	return M.x >= 0 && M.x <= displayWidth && M.y >= 0 && M.y <= displayHeight;
+bool Polygon::isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight, float margin){
+	for (int i = 0; i < size; i++) {
+		if (points[i].x + P.x >= -margin && points[i].x + P.x <= displayWidth+margin && points[i].y + P.y >= -margin && points[i].y + P.y <= displayHeight+margin) return true;
+	}
+	return false;
 }

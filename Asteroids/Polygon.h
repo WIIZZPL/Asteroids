@@ -25,6 +25,6 @@ public:
 	bool collision(const Vector2D& P, float angle, const Vector2D& R);
 	bool collision(const Vector2D& P, float angleP, const Vector2D& R, const Polygon& otherPolygon, float angleR);
 
-	bool isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight);
+	bool isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight, float margin = 0);
 };
 

@@ -25,6 +25,12 @@
     <Filter Include="Pliki źródłowe\Objects">
       <UniqueIdentifier>{698c7e77-2415-421d-b13e-a1b5b4750264}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\Base Objects">
+      <UniqueIdentifier>{1709961f-1c65-4512-afc3-cccd72d20412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Base Objects">
+      <UniqueIdentifier>{5ac470d9-5995-444f-b14a-9962072b218c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -39,13 +45,16 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>Pliki źródłowe\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Pliki źródłowe\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Pliki źródłowe\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Pliki źródłowe\Base Objects</Filter>
+    </ClCompile>
     <ClCompile Include="Polygon.cpp">
+      <Filter>Pliki źródłowe\Base Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Asteroid.cpp">
       <Filter>Pliki źródłowe\Objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,13 +68,16 @@
     <ClInclude Include="Scene.h">
       <Filter>Pliki nagłówkowe\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Pliki nagłówkowe\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Pliki nagłówkowe\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Pliki nagłówkowe\Base Objects</Filter>
+    </ClInclude>
     <ClInclude Include="Polygon.h">
+      <Filter>Pliki nagłówkowe\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroid.h">
       <Filter>Pliki nagłówkowe\Objects</Filter>
     </ClInclude>
   </ItemGroup>
