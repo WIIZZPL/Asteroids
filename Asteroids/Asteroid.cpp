@@ -42,7 +42,7 @@ Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Player
 	theta = 0;
 	theta_v = (float)rand() / RAND_MAX * max_theta_v / r;
 
-	lineThickness = 2;
+	lineThickness = 3;
 	asteroidColour = al_map_rgb(rand() % 192 + 64, rand() % 192 + 64, rand() % 192 + 64);
 }
 
@@ -56,19 +56,21 @@ void Asteroid::update(float dt, unsigned int displayWidth, unsigned int displayH
 	*P += *V * dt;
 	theta += theta_v * dt;
 
-	if (V->dotProduct(Vector2D(displayWidth / 2, displayHeight / 2) - *P) < 0 && !polygon->isVisible(*P, theta, displayWidth, displayHeight)) {
-		Vector2D H = polygon->getPointFurthestFrom(*P, theta, Vector2D(displayWidth / 2, displayHeight / 2)) - polygon->getPointClosestFrom(*P, theta, Vector2D(displayWidth / 2, displayHeight / 2));
+	//Wrapping
+	if (!polygon->isVisible(*P, theta, displayWidth, displayHeight)) {
+		Vector2D H = polygon->getDimentions(theta);
 
-		if (P->x < 0) P->x += displayWidth + r * (1 + deviation) * 2;
-		else if (P->x > displayWidth) P->x -= displayWidth + r * (1 + deviation) * 2;
-		if (P->y < 0) P->y += displayHeight + r * (1 + deviation) * 2;
-		else if (P->y > displayHeight) P->y -= displayHeight + r * (1 + deviation) * 2;
+		if (P->x < 0) P->x += displayWidth + H.x;
+		else if (P->x > displayWidth) P->x -= displayWidth + H.x;
+		if (P->y < 0) P->y += displayHeight + H.y;
+		else if (P->y > displayHeight) P->y -= displayHeight + H.y;
 	}
 }
 
 void Asteroid::render(float lag){
 	Vector2D p = Vector2D(*P) + *V * lag;
 	polygon->draw(p, theta, asteroidColour, lineThickness);
+	polygon->drawWireFrame(p, theta, asteroidColour, lineThickness);
 }
 
 Asteroid* Asteroid::AsteroidFactory(unsigned int displayWidth, unsigned int displayHeight, Player& player, float& massAvailable){

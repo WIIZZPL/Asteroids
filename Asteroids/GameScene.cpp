@@ -2,7 +2,7 @@
 
 char GameScene::keyboardState[ALLEGRO_KEY_MAX];
 
-#define MAX_MASS 100000
+#define MAX_MASS 1000
 #define NEW_ASTEROID_TIMER 3
 #define MIN_NO_ASTEROIDS 1
 

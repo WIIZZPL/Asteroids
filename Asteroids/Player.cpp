@@ -22,7 +22,7 @@ Player::Player(unsigned int displayWidth, unsigned int displayHeight){
 	theta = 0;
 
 	shipColour = al_map_rgb(255, 255, 255);
-	lineThickness = 1;
+	lineThickness = 2;
 }
 
 Player::~Player(){
@@ -48,18 +48,20 @@ void Player::update(float dt, char* keyboardState, unsigned int displayWidth, un
 	if (keyboardState[ALLEGRO_KEY_SPACE]) {
 		keyboardState[ALLEGRO_KEY_SPACE] = keyboardState[ALLEGRO_KEY_SPACE] ^ 2;
 		//TODO
+		D->rotate(-theta);
+		theta = 0;
 	}
 	if (keyboardState[ALLEGRO_KEY_RIGHT] || keyboardState[ALLEGRO_KEY_LEFT]) {
 
 		if (keyboardState[ALLEGRO_KEY_RIGHT]) {
 			keyboardState[ALLEGRO_KEY_RIGHT] = keyboardState[ALLEGRO_KEY_RIGHT] ^ 2;
 			theta -= rotate_speed * dt;
-			D->rotate(Vector2D(), -rotate_speed * dt);
+			D->rotate(-rotate_speed * dt);
 		}
 		if (keyboardState[ALLEGRO_KEY_LEFT]) {
 			keyboardState[ALLEGRO_KEY_LEFT] = keyboardState[ALLEGRO_KEY_LEFT] ^ 2;
 			theta += rotate_speed * dt;
-			D->rotate(Vector2D(), rotate_speed * dt);
+			D->rotate(rotate_speed * dt);
 		};
 		while (theta < 0) theta += 6.28318530718;
 		while (theta > 6.28318530718) theta -= 6.28318530718;
@@ -70,12 +72,12 @@ void Player::update(float dt, char* keyboardState, unsigned int displayWidth, un
 	*P += *V * dt;
 
 	//Wrapping
-	if (V->dotProduct(Vector2D(displayWidth/2, displayHeight/2) - *P) < 0 && !polygon->isVisible(*P, theta, displayWidth, displayHeight)) {
-		Vector2D H = polygon->getPointFurthestFrom(*P, theta, Vector2D(displayWidth / 2, displayHeight / 2)) - polygon->getPointClosestFrom(*P, theta, Vector2D(displayWidth / 2, displayHeight / 2));
+	if (!polygon->isVisible(*P, theta, displayWidth, displayHeight)) {
+		Vector2D H = polygon->getDimentions(theta);
 
-		if (P->x < 0) P->x += displayWidth - H.x;
+		if (P->x < 0) P->x += displayWidth + H.x;
 		else if (P->x > displayWidth) P->x -= displayWidth + H.x;
-		if (P->y < 0) P->y += displayHeight - H.y;
+		if (P->y < 0) P->y += displayHeight + H.y;
 		else if (P->y > displayHeight) P->y -= displayHeight + H.y;
 	}
 }
