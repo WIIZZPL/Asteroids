@@ -39,49 +39,58 @@
     <ClCompile Include="main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="App.cpp">
+    <ClCompile Include="src\App.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp">
+    <ClCompile Include="src\GameScene.cpp">
       <Filter>Pliki źródłowe\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\Player.cpp">
       <Filter>Pliki źródłowe\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
+    <ClCompile Include="src\Vector2D.cpp">
       <Filter>Pliki źródłowe\Base Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Polygon.cpp">
+    <ClCompile Include="src\Polygon.cpp">
       <Filter>Pliki źródłowe\Base Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Asteroid.cpp">
+    <ClCompile Include="src\Asteroid.cpp">
       <Filter>Pliki źródłowe\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object.cpp">
+      <Filter>Pliki źródłowe\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ColisionResponce.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.h">
+    <ClInclude Include="inc\App.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.h">
+    <ClInclude Include="inc\GameScene.h">
       <Filter>Pliki nagłówkowe\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="inc\Scene.h">
       <Filter>Pliki nagłówkowe\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="inc\Player.h">
       <Filter>Pliki nagłówkowe\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
+    <ClInclude Include="inc\Vector2D.h">
       <Filter>Pliki nagłówkowe\Base Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Polygon.h">
+    <ClInclude Include="inc\Polygon.h">
       <Filter>Pliki nagłówkowe\Base Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Asteroid.h">
+    <ClInclude Include="inc\Asteroid.h">
       <Filter>Pliki nagłówkowe\Objects</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="HyperspaceBold-GM0g.ttf" />
+    <ClInclude Include="inc\Object.h">
+      <Filter>Pliki nagłówkowe\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ColisionResponce.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

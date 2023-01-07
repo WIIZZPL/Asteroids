@@ -10,13 +10,13 @@
 
 #define FPSn 120
 #define SPT (1/120.0)
-#define aspectRatio ((double)16.0/9.0)
+#define ASPECT_RATIO ((double)16.0/9.0)
 
-enum sceneIDs {
-	GAME_SCENE_ID = 0,
-	MENU_SCENE_ID,
-	GAME_END_SCENE_ID,
-	HIGHSCORE_SCENE_ID
+enum class sceneIDs {
+	GAME = 0,
+	MENU,
+	GAME_END,
+	HIGHSCORE
 };
 
 class App {
@@ -34,7 +34,7 @@ private:
 
 	bool running;
 
-	unsigned int currentScene, nextScene;
+	sceneIDs currentScene, nextScene;
 	Scene* scene;
 
 	ALLEGRO_EVENT_QUEUE* eventQueue;
@@ -45,7 +45,7 @@ private:
 	void render(double lag);
 
 public:
-	static App* getInstance();
+	static App& getInstance();
 	App(App const& app) = delete;
 	App const& operator=(App const& app) = delete;
 	App(App&& app) = delete;
@@ -55,7 +55,7 @@ public:
 	static unsigned int getDisplayWidth();
 	static unsigned int getDisplayHeight();
 
-	void setNextScene(unsigned int nextScene);
+	void setNextScene(sceneIDs nextScene);
 
 	void run();
 	void stop();

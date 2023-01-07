@@ -4,11 +4,9 @@
 #include "Vector2D.h"
 
 int main(void) {
-	App* app = App::getInstance();
+	App& app = App::getInstance();
 
-	app->run();
-
-	delete app;
+	app.run();
 
 	return 0;
 }

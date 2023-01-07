@@ -37,15 +37,15 @@ App::App(){
 	accumulatedTime = 0;
 
 	running = false;
-	currentScene = 0;
-	nextScene = 0;
+	currentScene = sceneIDs::GAME;
+	nextScene = sceneIDs::GAME;
 
 	scene = new GameScene(displayWidth, displayHeight);
 }
 
-App* App::getInstance(){
+App& App::getInstance(){
 	if (!instance) instance = new App();
-	return instance;
+	return *instance;
 }
 
 App::~App(){
@@ -79,7 +79,7 @@ void App::run() {
 	}
 }
 
-void App::setNextScene(unsigned int nextScene){
+void App::setNextScene(sceneIDs nextScene){
 	this->nextScene = nextScene;
 }
 
@@ -97,10 +97,9 @@ unsigned int App::getDisplayHeight() {
 
 void App::sceneSwitch() {
 	if (currentScene != nextScene) {
-		if (currentScene != -1) delete scene;
 
 		switch(nextScene){
-		case GAME_SCENE_ID:
+		case sceneIDs::GAME:
 			scene = new GameScene(displayWidth, displayHeight);
 		default:
 			exit(555);
@@ -136,7 +135,7 @@ void App::render(double lag) {
 	FPS[FPSi] = 1 / deltaFrameTime;
 	FPSi = (FPSi + 1) % FPSn;
 	double MFPS = 0;
-	for (int i = 0; i < FPSn; i++) MFPS += FPS[1];
+	for (int i = 0; i < FPSn; i++) MFPS += FPS[i];
 	MFPS /= FPSn;
 	char title[22];
 	snprintf(title, 22, "Asteroids FPS:%4.2lf", MFPS);

@@ -22,25 +22,26 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="Asteroid.cpp" />
-    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="src\ColisionResponce.cpp" />
+    <ClCompile Include="src\Object.cpp" />
+    <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\Asteroid.cpp" />
+    <ClCompile Include="src\GameScene.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Polygon.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Polygon.cpp" />
+    <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.h" />
-    <ClInclude Include="Asteroid.h" />
-    <ClInclude Include="GameScene.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Polygon.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Vector2D.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="HyperspaceBold-GM0g.ttf" />
+    <ClInclude Include="inc\ColisionResponce.h" />
+    <ClInclude Include="inc\Object.h" />
+    <ClInclude Include="inc\App.h" />
+    <ClInclude Include="inc\Asteroid.h" />
+    <ClInclude Include="inc\GameScene.h" />
+    <ClInclude Include="inc\Player.h" />
+    <ClInclude Include="inc\Polygon.h" />
+    <ClInclude Include="inc\Scene.h" />
+    <ClInclude Include="inc\Vector2D.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -144,6 +145,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

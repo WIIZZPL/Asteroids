@@ -20,16 +20,15 @@ public:
 	Vector2D getCentrePoint(float angle);
 
 	void draw(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, float lineThickness);
-	void draw(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, float lineThickness, ALLEGRO_COLOR& fill);
 	void drawWireFrame(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, float lineThickness);
-
-	bool collision(const Vector2D& P, float angle, const Vector2D& R);
-	bool collision(const Vector2D& P, float angleP, const Vector2D& R, const Polygon& otherPolygon, float angleR);
 
 	bool isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight, float margin = 0);
 
 	Vector2D getWidthMagnitudes(float angle);
 	Vector2D getHeightMagnitudes(float angle);
 	Vector2D getDimentions(float angle);
+
+	static bool collisionPolygonPoint(const Polygon& polygon, const Vector2D& P, float angleP, const Vector2D& R);
+	static bool collisionPolygonPolygon(const Polygon& polygon, const Vector2D& P, float angleP, const Polygon& otherPolygon, const Vector2D& R, float angleR);
 };
 

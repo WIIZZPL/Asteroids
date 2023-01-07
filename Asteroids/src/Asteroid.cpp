@@ -1,19 +1,20 @@
 #include "Asteroid.h"
 
-#define MIN_MASS 10
-#define MAX_MASS 75
+#define MIN_RADIUS 10
+#define MIN_SPAWN_RADIUS 35
+#define MAX_SPAWN_RADIUS 75
 #define MIN_SIDES 8
 #define MAX_SIDES 16
-#define deviation 0.3
+#define DEVIATION 0.3
 
-#define safety_radius 100
+#define SAFETY_RADIUS 100
 
-#define min_v 50
-#define max_v 200
-#define max_theta_v 15
+#define MIN_V 50
+#define MAX_V 200
+#define MAX_THETA_V 20
 
-Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Player& player, float r) : r(r) {
-	int n = rand() % (MAX_SIDES - MIN_MASS) + MIN_SIDES;
+Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Object& player, float r) : mass(3.14159265359 * r * r) {
+	int n = rand() % (MAX_SIDES - MIN_SIDES) + MIN_SIDES;
 	Vector2D* shape = new Vector2D[n];
 	Vector2D D(0, -r);
 
@@ -22,7 +23,7 @@ Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Player
 		float ca; //Current steepness;
 		do {
 			shape[i] = D;
-			shape[i] *= 1 + deviation * ((float)rand() / RAND_MAX * 2 - 1);
+			shape[i] *= 1 + DEVIATION * ((float)rand() / RAND_MAX * 2 - 1);
 			D.rotate(6.28318530718 / n);
 			if (i == 0) ca = -1;
 			else {
@@ -33,17 +34,17 @@ Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Player
 	}
 	polygon = new Polygon(n, shape);
 
-	P = new Vector2D(displayWidth/2, displayHeight/2);
+	P = new Vector2D(displayWidth*(float)rand()/RAND_MAX, displayHeight * (float)rand() / RAND_MAX);
 
-	V = new Vector2D(0, -max_v * (float)rand() / RAND_MAX);
-	V->y = fminf(-min_v, V->y);
+	V = new Vector2D(0, -MAX_V * (float)rand() / RAND_MAX);
+	V->y = fminf(-MIN_V, V->y);
 	V->rotate(6.28318530718 * (float)rand() / RAND_MAX);
 
 	theta = 0;
-	theta_v = (float)rand() / RAND_MAX * max_theta_v / r;
+	theta_v = (float)rand() / RAND_MAX * MAX_THETA_V / r;
 
 	lineThickness = 3;
-	asteroidColour = al_map_rgb(rand() % 192 + 64, rand() % 192 + 64, rand() % 192 + 64);
+	colour = al_map_rgb(rand() % 192 + 64, rand() % 192 + 64, rand() % 192 + 64);
 }
 
 Asteroid::~Asteroid(){
@@ -69,13 +70,13 @@ void Asteroid::update(float dt, unsigned int displayWidth, unsigned int displayH
 
 void Asteroid::render(float lag){
 	Vector2D p = Vector2D(*P) + *V * lag;
-	polygon->draw(p, theta, asteroidColour, lineThickness);
-	polygon->drawWireFrame(p, theta, asteroidColour, lineThickness);
+	polygon->draw(p, theta, colour, lineThickness);
+	polygon->drawWireFrame(p, theta, colour, lineThickness);
 }
 
-Asteroid* Asteroid::AsteroidFactory(unsigned int displayWidth, unsigned int displayHeight, Player& player, float& massAvailable){
-	if (massAvailable < MIN_MASS) return nullptr;
-	float r = ((float)rand() / RAND_MAX) * (fminf(MAX_MASS, massAvailable) - MIN_MASS) + MIN_MASS;
-	massAvailable -= r;
+Asteroid* Asteroid::AsteroidFactory(unsigned int displayWidth, unsigned int displayHeight, Object& player, float& radiusAvailable){
+	if (radiusAvailable < MIN_SPAWN_RADIUS) return nullptr;
+	float r = ((float)rand() / RAND_MAX) * (fminf(MAX_SPAWN_RADIUS, radiusAvailable) - MIN_SPAWN_RADIUS) + MIN_SPAWN_RADIUS;
+	radiusAvailable -= r;
 	return new Asteroid(displayWidth, displayHeight, player, r);
 }

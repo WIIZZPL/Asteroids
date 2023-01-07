@@ -7,22 +7,31 @@ public:
 	}
 };
 
-bool isConvex(Vector2D* A, Vector2D* B, Vector2D* C) {
-	Vector2D BA = *A - *B;
-	Vector2D BC = *C - *B;
+bool isConvex(const Vector2D& A, const Vector2D& B, const Vector2D& C) {
+	Vector2D BA = A - B;
+	Vector2D BC = C - B;
 	return (BA.x * BC.y - BA.y * BC.x) < 0;
 }
 
-bool pointInSimplex(Vector2D* A, Vector2D* B, Vector2D* C, Vector2D* P) {
-	float w1 = (A->x * (C->y - A->y) + (P->y - A->y) * (C->x - A->x) - P->x * (C->y - A->y)) / ((B->y - A->y) * (C->x - A->x) - (B->x - A->x) * (C->y - A->y));
-	float w2 = (P->y - A->y - w1*(B->y - A->y)) / (C->y - A->y);
+bool pointInSimplex(const Vector2D& A, const Vector2D& B, const Vector2D& C, const Vector2D& P) {
+	float w1 = (A.x * (C.y - A.y) + (P.y - A.y) * (C.x - A.x) - P.x * (C.y - A.y)) / ((B.y - A.y) * (C.x - A.x) - (B.x - A.x) * (C.y - A.y));
+	float w2 = (P.y - A.y - w1*(B.y - A.y)) / (C.y - A.y);
 
 	return (w1 >= 0 && w2 >= 0 && (w1 + w2) <= 1);
 }
 
+bool SimplexInSimplex(const Vector2D& A, const Vector2D& B, const Vector2D& C, const Vector2D& P, const Vector2D& R, const Vector2D& S) {
+	if (pointInSimplex(A, B, C, P)) return true;
+	if (pointInSimplex(A, B, C, R)) return true;
+	if (pointInSimplex(A, B, C, S)) return true;
+	if (pointInSimplex(P, R, S, A)) return true;
+	if (pointInSimplex(P, R, S, B)) return true;
+	return pointInSimplex(P, R, S, C);
+}
+
 Polygon::Polygon(int size, Vector2D* points) : size(size), points(points) {
 	if (size < 3) throw LessThanSimplexException();
-	O = new Vector2D;
+	O = new Vector2D();
 	std::vector<Vector2D*> pointsToClip;
 	for (int i = 0; i < size; i++) {
 		*O += points[i];
@@ -39,7 +48,7 @@ Polygon::Polygon(int size, Vector2D* points) : size(size), points(points) {
 		ni = (i + 1) % pointsToClip.size();
 
 		{ // First check - internal angle
-			if (isConvex(pointsToClip[pi], pointsToClip[i], pointsToClip[ni])) {
+			if (isConvex(*pointsToClip[pi], *pointsToClip[i], *pointsToClip[ni])) {
 				continue;
 			}
 		}
@@ -48,7 +57,7 @@ Polygon::Polygon(int size, Vector2D* points) : size(size), points(points) {
 			bool collides = false;
 			for (int j = 0; j < pointsToClip.size(); j++) {
 				if (j == pi || j == i || j == ni) continue;
-				collides = pointInSimplex(pointsToClip[pi], pointsToClip[i], pointsToClip[ni], pointsToClip[j]);
+				collides = pointInSimplex(*pointsToClip[pi], *pointsToClip[i], *pointsToClip[ni], *pointsToClip[j]);
 				if (collides) break;
 			}
 			if (collides) {
@@ -84,19 +93,6 @@ void Polygon::draw(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, fl
 	al_draw_line(t.x, t.y, t1.x, t1.y, lineColour, lineThickness);
 }
 
-void Polygon::draw(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, float lineThickness, ALLEGRO_COLOR& fill) {
-	for (int i = 0; i < size - 1; i++) {
-		Vector2D t = points[i].rotated(angle);
-		Vector2D t1 = points[i + 1].rotated(angle);
-		al_draw_filled_triangle(t.x + P.x, t.y + P.y, t1.x + P.x, t1.y + P.y, P.x, P.y, fill);
-	}
-	Vector2D t = points[size - 1].rotated(angle);
-	Vector2D t1 = points[0].rotated(angle);
-	al_draw_filled_triangle(t.x + P.x, t.y + P.y, t1.x + P.x, t1.y + P.y, P.x, P.y, fill);
-
-	draw(P, angle, lineColour, lineThickness);
-}
-
 void Polygon::drawWireFrame(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, float lineThickness) {
 	for (int i = 0; i < (size - 2) * 3; i += 3) {
 		Vector2D A = wireframe[i]->rotated(angle) + P;
@@ -104,16 +100,6 @@ void Polygon::drawWireFrame(const Vector2D& P, float angle, ALLEGRO_COLOR& lineC
 		Vector2D C = wireframe[i+2]->rotated(angle) + P;
 		al_draw_triangle(A.x, A.y, B.x, B.y, C.x, C.y, lineColour, lineThickness/2);
 	}
-}
-
-bool Polygon::collision(const Vector2D& P, float angle, const Vector2D& R) {
-	//TODO
-	return false;
-}
-
-bool Polygon::collision(const Vector2D& P, float angleP, const Vector2D& R, const Polygon& otherPolygon, float angleR){
-	//TODO
-	return false;
 }
 
 Vector2D Polygon::getCentrePoint(float angle){
@@ -160,4 +146,30 @@ Vector2D Polygon::getDimentions(float angle){
 	}
 
 	return Vector2D(xx-mx, xy-my);
+}
+
+bool Polygon::collisionPolygonPoint(const Polygon& polygon, const Vector2D& P, float angleP, const Vector2D& R) {
+	for (int i = 0; i < (polygon.size - 2) * 3; i += 3) {
+		Vector2D A = polygon.wireframe[i]->rotated(angleP) + P;
+		Vector2D B = polygon.wireframe[i + 1]->rotated(angleP) + P;
+		Vector2D C = polygon.wireframe[i + 2]->rotated(angleP) + P;
+		if (pointInSimplex(A, B, C, R)) return true;
+	}
+	return false;
+}
+
+bool Polygon::collisionPolygonPolygon(const Polygon& polygon, const Vector2D& P, float angleP, const Polygon& otherPolygon, const Vector2D& R, float angleR) {
+	for (int i = 0; i < (polygon.size - 2) * 3; i += 3) {
+		Vector2D A = polygon.wireframe[i]->rotated(angleP) + P;
+		Vector2D B = polygon.wireframe[i + 1]->rotated(angleP) + P;
+		Vector2D C = polygon.wireframe[i + 2]->rotated(angleP) + P;
+		for (int j = 0; j < (otherPolygon.size - 2) * 3; j += 3) {
+			Vector2D D = otherPolygon.wireframe[j]->rotated(angleR) + R;
+			Vector2D E = otherPolygon.wireframe[j + 1]->rotated(angleR) + R;
+			Vector2D F = otherPolygon.wireframe[j + 2]->rotated(angleR) + R;
+
+			if (SimplexInSimplex(A, B, C, D, E, F)) return true;
+		}
+	}
+	return false;
 }
