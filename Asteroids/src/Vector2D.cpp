@@ -1,14 +1,6 @@
 #include "Vector2D.h"
 #include <math.h>
 
-Vector2D::Vector2D() : x(0), y(0) {}
-
-Vector2D::Vector2D(const Vector2D& v) : x(v.x), y(v.y) {}
-
-Vector2D::Vector2D(float a) : x(a), y(a) {}
-
-Vector2D::Vector2D(float x, float y) : x(x), y(y) {}
-
 Vector2D& Vector2D::operator=(const Vector2D& rhs) {
 	if (this == &rhs) return *this;
 	this->x = rhs.x;
@@ -32,17 +24,13 @@ void Vector2D::rotate(float angle) {
 	*this *= magnitude / this->magnitude();
 }
 
-Vector2D Vector2D::rotated(float angle) {
+Vector2D Vector2D::rotated(float angle) const{
 	Vector2D R = *this;
-	float magnitude = R.magnitude();
-	float x = R.x;
-	R.x = R.x * cosf(angle) + R.y * sinf(angle);
-	R.y = R.y * cosf(angle) - x * sinf(angle);
-	R *= magnitude / R.magnitude();
+	R.rotate(angle);
 	return R;
 }
 
-void Vector2D::rotate(const Vector2D& O, float angle){
+void Vector2D::rotateAround(const Vector2D& O, float angle){
 	*this -= O;
 	float magnitude = this->magnitude();
 	float x = this->x;
@@ -52,13 +40,9 @@ void Vector2D::rotate(const Vector2D& O, float angle){
 	*this += O;
 }
 
-Vector2D Vector2D::rotated(const Vector2D& O, float angle) {
-	Vector2D R = *this - O;
-	float magnitude = R.magnitude();
-	R.x = R.x * cosf(angle) + R.y * sinf(angle);
-	R.y = R.y * cosf(angle) - x * sinf(angle);
-	R *= magnitude / R.magnitude();
-	R += O;
+Vector2D Vector2D::rotatedAround(const Vector2D& O, float angle) const {
+	Vector2D R = *this;
+	R.rotateAround(O, angle);
 	return R;
 }
 

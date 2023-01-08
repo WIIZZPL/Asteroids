@@ -1,18 +1,17 @@
 #pragma once
 
 #include "Object.h"
-#include "ColisionResponce.h"
 
 class Asteroid : public Object {
 private:
-	float mass;
+	const float mass;
 
 public:
 	Asteroid(unsigned int displayWidth, unsigned int displayHeight, Object& player, float r);
 	~Asteroid();
 
-	void update(float dt, unsigned int displayWidth, unsigned int displayHeight);
-	void render(float lag);
+	void update(float dt);
+	void render(float lag) const;
 
 	static Asteroid* AsteroidFactory(unsigned int displayWidth, unsigned int displayHeight, Object& player, float& radiusAvailable);
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <allegro5/allegro.h>
+union ALLEGRO_EVENT;
 
 class Scene {
 private:
@@ -8,5 +8,5 @@ private:
 public:
 	virtual void processInput(ALLEGRO_EVENT& event) = 0;
 	virtual void update(double dt) = 0;
-	virtual void render(double lag) = 0;
+	virtual void render(double lag) const = 0;
 };

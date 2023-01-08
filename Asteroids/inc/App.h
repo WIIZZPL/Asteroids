@@ -1,16 +1,12 @@
 #pragma once
 
-#include <stdio.h>
-#include <algorithm>
-#include "allegro5/allegro.h"
-#include "allegro5/allegro_primitives.h"
-#include "allegro5/allegro_audio.h"
-
-#include "GameScene.h"
-
 #define FPSn 120
 #define SPT (1/120.0)
 #define ASPECT_RATIO ((double)16.0/9.0)
+
+struct ALLEGRO_DISPLAY;
+struct ALLEGRO_EVENT_QUEUE;
+class Scene;
 
 enum class sceneIDs {
 	GAME = 0,
@@ -21,8 +17,9 @@ enum class sceneIDs {
 
 class App {
 private:
-	static App* instance;
+	static App instance;
 	App();
+	~App();
 
 	static unsigned int displayWidth, displayHeight;
 	ALLEGRO_DISPLAY* display;
@@ -42,7 +39,8 @@ private:
 	void sceneSwitch();
 	void processInput();
 	void update(double dt);
-	void render(double lag);
+	void render(double lag) const;
+	void fpsIndicator();
 
 public:
 	static App& getInstance();
@@ -50,7 +48,6 @@ public:
 	App const& operator=(App const& app) = delete;
 	App(App&& app) = delete;
 	App const& operator=(App&& app) = delete;
-	~App();
 
 	static unsigned int getDisplayWidth();
 	static unsigned int getDisplayHeight();

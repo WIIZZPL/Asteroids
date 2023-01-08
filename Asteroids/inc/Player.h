@@ -1,17 +1,18 @@
 #pragma once
 
 #include "Object.h"
-#include "ColisionResponce.h"
 
 class Player : public Object {
 private:
 	//Thruster* thruster;
 
 public:
-	Player(unsigned int displayWidth, unsigned int displayHeight);
+	Player();
 	~Player();
 
-	void update(float dt, char* keyboardState, unsigned int displayWidth, unsigned int displayHeight);
-	void render(float lag);
+	void update(float dt, char* keyboardState);
+	void render(float lag) const;
+
+	friend struct CollisionResponce;
 };
 

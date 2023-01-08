@@ -1,16 +1,16 @@
 #pragma once
 
 #include <vector>
+#include <allegro5/allegro.h>
+
 #include "Scene.h"
 #include "Player.h"
 #include "Asteroid.h"
-#include "ColisionResponce.h"
-#include "App.h"
 
 class GameScene : public Scene {
 private:
 	static char keyboardState[];
-	ALLEGRO_COLOR backgroundColor;
+	const ALLEGRO_COLOR backgroundColor = al_map_rgb(0, 0, 0);
 
 	unsigned long long int score;
 
@@ -19,15 +19,15 @@ private:
 
 	std::vector<Asteroid*> asteroids;
 	float radiusAvailable;
-	float asteroid_timer;
+	float asteroidTimer;
 
 	void asteroidsSpawn(double dt);
 	void colissionsHandling();
 
 public:
-	GameScene(unsigned int displayWidth, unsigned int displayHeight);
+	GameScene();
 	~GameScene();
 	void processInput(ALLEGRO_EVENT& event);
 	void update(double dt);
-	void render(double lag);
+	void render(double lag) const;
 };

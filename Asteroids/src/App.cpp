@@ -1,6 +1,12 @@
 #include "App.h"
 
-App* App::instance;
+#include <stdio.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_audio.h>
+#include "GameScene.h"
+
+App App::instance;
 unsigned int App::displayWidth = 1280;
 unsigned int App::displayHeight = 720;
 
@@ -8,9 +14,9 @@ App::App(){
 	try {
 		if (!al_init()) throw "Allegro init";
 		if (!al_init_primitives_addon()) throw "Allegro primitives addon";
-		if (!al_install_audio()) "audio";
-		if (!al_install_keyboard()) "keyboard";
-		if (!al_install_mouse()) "mouse";
+		if (!al_install_audio()) throw "audio";
+		if (!al_install_keyboard()) throw "keyboard";
+		if (!al_install_mouse()) throw "mouse";
 
 		display = al_create_display(displayWidth, displayHeight);
 		if (!display) throw "display";
@@ -40,12 +46,11 @@ App::App(){
 	currentScene = sceneIDs::GAME;
 	nextScene = sceneIDs::GAME;
 
-	scene = new GameScene(displayWidth, displayHeight);
+	scene = new GameScene();
 }
 
 App& App::getInstance(){
-	if (!instance) instance = new App();
-	return *instance;
+	return instance;
 }
 
 App::~App(){
@@ -76,11 +81,8 @@ void App::run() {
 		}
 
 		render(accumulatedTime);
+		fpsIndicator();
 	}
-}
-
-void App::setNextScene(sceneIDs nextScene){
-	this->nextScene = nextScene;
 }
 
 void App::stop() {
@@ -95,12 +97,16 @@ unsigned int App::getDisplayHeight() {
 	return App::displayHeight;
 }
 
+void App::setNextScene(sceneIDs nextScene){
+	this->nextScene = nextScene;
+}
+
 void App::sceneSwitch() {
 	if (currentScene != nextScene) {
 
 		switch(nextScene){
 		case sceneIDs::GAME:
-			scene = new GameScene(displayWidth, displayHeight);
+			scene = new GameScene();
 		default:
 			exit(555);
 		}
@@ -125,13 +131,15 @@ void App::update(double dt) {
 	scene->update(dt);
 }
 
-void App::render(double lag) {
+void App::render(double lag) const {
 	al_clear_to_color(al_map_rgb(255, 0, 255));
 
 	scene->render(lag);
 
 	al_flip_display();
+}
 
+void App::fpsIndicator() {
 	FPS[FPSi] = 1 / deltaFrameTime;
 	FPSi = (FPSi + 1) % FPSn;
 	double MFPS = 0;

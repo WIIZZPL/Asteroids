@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Player.h"
-#include "Asteroid.h"
-
+class Player;
+class Bullet;
+class Barrier;
 class Asteroid;
 
 struct ColisionResponce {

@@ -1,5 +1,10 @@
 #include "Polygon.h"
 
+#include <exception>
+#include <limits>
+#include "allegro5/allegro5.h"
+#include "allegro5/allegro_primitives.h"
+
 class LessThanSimplexException : public std::exception {
 public:
 	const char* what() {
@@ -31,15 +36,15 @@ bool SimplexInSimplex(const Vector2D& A, const Vector2D& B, const Vector2D& C, c
 
 Polygon::Polygon(int size, Vector2D* points) : size(size), points(points) {
 	if (size < 3) throw LessThanSimplexException();
-	O = new Vector2D();
+	O = Vector2D();
 	std::vector<Vector2D*> pointsToClip;
 	for (int i = 0; i < size; i++) {
-		*O += points[i];
+		O += points[i];
 		pointsToClip.push_back(points + i);
 	}
-	*O /= size;
+	O /= size;
 
-	wireframe = new Vector2D*[(size - 2) * 3];
+	wireframe = std::vector<Vector2D*>();
 	int wi = 0;
 	int pi = -1, i = 0, ni = 1;
 	while (pointsToClip.size() > 3) {
@@ -65,24 +70,22 @@ Polygon::Polygon(int size, Vector2D* points) : size(size), points(points) {
 			}
 		}
 
-		wireframe[wi++] = pointsToClip[pi];
-		wireframe[wi++] = pointsToClip[i];
-		wireframe[wi++] = pointsToClip[ni];
+		wireframe.push_back(pointsToClip[pi]);
+		wireframe.push_back(pointsToClip[i]);
+		wireframe.push_back(pointsToClip[ni]);
 
 		pointsToClip.erase(pointsToClip.begin() + i);
 	}
-	wireframe[wi++] = pointsToClip[0];
-	wireframe[wi++] = pointsToClip[1];
-	wireframe[wi++] = pointsToClip[2];
+	wireframe.push_back(pointsToClip[0]);
+	wireframe.push_back(pointsToClip[1]);
+	wireframe.push_back(pointsToClip[2]);
 }
 
 Polygon::~Polygon(){
 	delete[size] points;
-	delete O;
-	delete[(size - 2) * 3] wireframe;
 }
 
-void Polygon::draw(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, float lineThickness) {
+void Polygon::draw(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColour, float lineThickness) const {
 	for (int i = 0; i < size - 1; i++) {
 		Vector2D t = points[i].rotated(angle) + P;
 		Vector2D t1 = points[i + 1].rotated(angle) + P;
@@ -93,7 +96,7 @@ void Polygon::draw(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, fl
 	al_draw_line(t.x, t.y, t1.x, t1.y, lineColour, lineThickness);
 }
 
-void Polygon::drawWireFrame(const Vector2D& P, float angle, ALLEGRO_COLOR& lineColour, float lineThickness) {
+void Polygon::drawWireFrame(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColour, float lineThickness) const {
 	for (int i = 0; i < (size - 2) * 3; i += 3) {
 		Vector2D A = wireframe[i]->rotated(angle) + P;
 		Vector2D B = wireframe[i+1]->rotated(angle) + P;
@@ -102,11 +105,11 @@ void Polygon::drawWireFrame(const Vector2D& P, float angle, ALLEGRO_COLOR& lineC
 	}
 }
 
-Vector2D Polygon::getCentrePoint(float angle){
-	return O->rotated(angle);
+Vector2D Polygon::getCentrePoint(float angle) {
+	return O.rotated(angle);
 }
 
-bool Polygon::isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight, float margin){
+bool Polygon::isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight, float margin) const {
 	for (int i = 0; i < size; i++) {
 		Vector2D t = points[i].rotated(angle) + P;
 		if (t.x >= -margin && t.x <= displayWidth+margin && t.y >= -margin && t.y <= displayHeight+margin) return true;
@@ -114,7 +117,7 @@ bool Polygon::isVisible(const Vector2D& P, float angle, unsigned int displayWidt
 	return false;
 }
 
-Vector2D Polygon::getWidthMagnitudes(float angle){
+Vector2D Polygon::getWidthMagnitudes(float angle) const {
 	float mx = FLT_MAX, xx = FLT_MIN;
 	for (int i = 0; i < size; i++) {
 		Vector2D A = points[i].rotated(angle);
@@ -124,7 +127,7 @@ Vector2D Polygon::getWidthMagnitudes(float angle){
 	return Vector2D(mx, xx);
 }
 
-Vector2D Polygon::getHeightMagnitudes(float angle){
+Vector2D Polygon::getHeightMagnitudes(float angle) const {
 	float my = FLT_MAX, xy = FLT_MIN;
 	for (int i = 0; i < size; i++) {
 		Vector2D A = points[i].rotated(angle);
@@ -134,18 +137,11 @@ Vector2D Polygon::getHeightMagnitudes(float angle){
 	return Vector2D(my, xy);
 }
 
-Vector2D Polygon::getDimentions(float angle){
-	float mx = FLT_MAX, my = FLT_MAX, xx = FLT_MIN, xy = FLT_MIN; // max and min x, y
+Vector2D Polygon::getDimentions(float angle) const {
+	Vector2D X = getWidthMagnitudes(angle);
+	Vector2D Y = getHeightMagnitudes(angle);
 
-	for (int i = 0; i < size; i++) {
-		Vector2D A = points[i].rotated(angle);
-		mx = fminf(mx, A.x);
-		my = fminf(my, A.y);
-		xx = fmaxf(xx, A.x);
-		xy = fmaxf(xy, A.y);
-	}
-
-	return Vector2D(xx-mx, xy-my);
+	return Vector2D(X.y-X.x, Y.y-Y.x);
 }
 
 bool Polygon::collisionPolygonPoint(const Polygon& polygon, const Vector2D& P, float angleP, const Vector2D& R) {
