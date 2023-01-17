@@ -4,8 +4,8 @@
 #include <math.h>
 
 #define MIN_RADIUS 10
-#define MIN_SPAWN_RADIUS 35
-#define MAX_SPAWN_RADIUS 75
+#define MIN_SPAWN_RADIUS 50
+#define MAX_SPAWN_RADIUS 100
 #define MIN_SIDES 8
 #define MAX_SIDES 16
 #define DEVIATION 0.3f
@@ -69,13 +69,10 @@ Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Object
 	if (HY.x <= candidatePoint.y && candidatePoint.y <= displayHeight + HY.y) candidatePoints.push_back(candidatePoint);
 
 	P = candidatePoints[rand() % candidatePoints.size()];
-
-	numberOfInstances++;
 }
 
 Asteroid::~Asteroid(){
 	delete polygon;
-	numberOfInstances--;
 }
 
 void Asteroid::update(float dt){

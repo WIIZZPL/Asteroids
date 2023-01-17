@@ -2,28 +2,29 @@
 
 #include <allegro5/allegro.h>
 #include "App.h"
+#include "Bullet.h"
 
 #define N_VECTORS 4
-#define SHIP_HEIGHT 0.025f
+#define SHIP_HEIGHT 20.0f
 
 #define ACCELERATION 1500
 #define DRAG 0.98f
 #define THETA_V 5
 
+#define BULLET_FIRE_TIMER 0.15f
+
 #define PI 3.14159265359f
 
 Player::Player(){
-	
-	float ship_radius = App::getDisplayHeight() * SHIP_HEIGHT;
 	Vector2D* ship = new Vector2D[N_VECTORS];
 
-	ship[0] = Vector2D(0, -ship_radius);
-	ship[1] = Vector2D(-ship_radius, +ship_radius);
-	ship[2] = Vector2D(0, ship_radius/2);
-	ship[3] = Vector2D(+ship_radius, +ship_radius);
+	ship[0] = Vector2D(0, -SHIP_HEIGHT);
+	ship[1] = Vector2D(-SHIP_HEIGHT, +SHIP_HEIGHT);
+	ship[2] = Vector2D(0, SHIP_HEIGHT /2);
+	ship[3] = Vector2D(+SHIP_HEIGHT, +SHIP_HEIGHT);
 
 	polygon = new Polygon(N_VECTORS, ship);
-
+	
 	P = Vector2D(App::getDisplayWidth() / 2, App::getDisplayHeight() / 2);
 	D = Vector2D(0, -1);
 	V = Vector2D();
@@ -33,15 +34,14 @@ Player::Player(){
 	colour = al_map_rgb(255, 255, 255);
 	lineThickness = 2;
 
-	numberOfInstances++;
+	bulletTimer = 0;
 }
 
 Player::~Player(){
 	delete polygon;
-	numberOfInstances--;
 }
 
-void Player::update(float dt, char* keyboardState){
+void Player::update(float dt, char* keyboardState, std::vector<Bullet*>& bullets){
 
 	A -= A;
 
@@ -55,9 +55,10 @@ void Player::update(float dt, char* keyboardState){
 	}
 	if (keyboardState[ALLEGRO_KEY_SPACE]) {
 		keyboardState[ALLEGRO_KEY_SPACE] = keyboardState[ALLEGRO_KEY_SPACE] ^ 2;
-		//TODO
-		D.rotate(-theta);
-		theta = 0;
+		if (bulletTimer == BULLET_FIRE_TIMER) {
+			bullets.push_back(new Bullet(P + D * SHIP_HEIGHT, D));
+			bulletTimer = 0;
+		}
 	}
 	if (keyboardState[ALLEGRO_KEY_RIGHT] || keyboardState[ALLEGRO_KEY_LEFT]) {
 
@@ -78,6 +79,8 @@ void Player::update(float dt, char* keyboardState){
 	V *= DRAG;
 	V += A * dt;
 	P += V * dt;
+
+	bulletTimer = fminf(bulletTimer+dt, BULLET_FIRE_TIMER);
 
 	unsigned int displayWidth = App::getDisplayWidth();
 	unsigned int displayHeight = App::getDisplayHeight();

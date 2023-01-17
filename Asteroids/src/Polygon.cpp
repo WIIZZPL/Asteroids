@@ -15,7 +15,8 @@ public:
 bool isConvex(const Vector2D& A, const Vector2D& B, const Vector2D& C) {
 	Vector2D BA = A - B;
 	Vector2D BC = C - B;
-	return (BA.x * BC.y - BA.y * BC.x) < 0;
+	float cross = BA.x * BC.y - BA.y * BC.x;
+	return cross > 0;
 }
 
 bool pointInSimplex(const Vector2D& A, const Vector2D& B, const Vector2D& C, const Vector2D& P) {
@@ -53,7 +54,7 @@ Polygon::Polygon(int size, Vector2D* points) : size(size), points(points) {
 		ni = (i + 1) % pointsToClip.size();
 
 		{ // First check - internal angle
-			if (isConvex(*pointsToClip[pi], *pointsToClip[i], *pointsToClip[ni])) {
+			if (!isConvex(*pointsToClip[pi], *pointsToClip[i], *pointsToClip[ni])) {
 				continue;
 			}
 		}

@@ -22,7 +22,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ColisionResponce.cpp" />
+    <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Asteroid.cpp" />
@@ -33,7 +33,7 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\ColisionResponce.h" />
+    <ClInclude Include="inc\Bullet.h" />
     <ClInclude Include="inc\Object.h" />
     <ClInclude Include="inc\App.h" />
     <ClInclude Include="inc\Asteroid.h" />
@@ -145,11 +145,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -160,12 +161,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

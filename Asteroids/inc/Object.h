@@ -16,12 +16,9 @@ protected:
 	ALLEGRO_COLOR colour;
 	float lineThickness;
 
-	static unsigned int numberOfInstances;
-
 public:
 	static bool colissionObjectPoint(const Object& A, const Vector2D& B);
 	static bool colissionObjectObject(const Object& A, const Object& B);
-	unsigned int getNumberOfInstances() const;
 	void wrapAroundScreen(unsigned int displayWidth, unsigned int displayHeight);
 };
 

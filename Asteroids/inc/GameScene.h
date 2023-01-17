@@ -4,8 +4,11 @@
 #include <allegro5/allegro.h>
 
 #include "Scene.h"
-#include "Player.h"
-#include "Asteroid.h"
+
+class Player;
+class Asteroid;
+class Bullet;
+class Polygon;
 
 class GameScene : public Scene {
 private:
@@ -20,6 +23,8 @@ private:
 	std::vector<Asteroid*> asteroids;
 	float radiusAvailable;
 	float asteroidTimer;
+
+	std::vector<Bullet*> bullets;
 
 	void asteroidsSpawn(double dt);
 	void colissionsHandling();

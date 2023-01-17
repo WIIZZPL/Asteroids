@@ -1,9 +1,10 @@
 #include "GameScene.h"
 
+#include "App.h"
+
 #include "Player.h"
 #include "Asteroid.h"
-#include "ColisionResponce.h"
-#include "App.h"
+#include "Bullet.h"
 
 #define STARTING_LIVES 3
 #define MAX_TOTAL_RADIUS 1000
@@ -25,11 +26,13 @@ GameScene::GameScene(){
 		Asteroid* newAsteroid = Asteroid::AsteroidFactory(App::getDisplayWidth(), App::getDisplayHeight(), *player, radiusAvailable);
 		if (newAsteroid != nullptr) asteroids.push_back(newAsteroid);
 	}
+
 }
 
 GameScene::~GameScene(){
 	delete player;
 	for (auto& asteroid : asteroids) delete asteroid;
+	for (auto& bullet : bullets) delete bullet;
 }
 
 void GameScene::processInput(ALLEGRO_EVENT& event){
@@ -46,8 +49,9 @@ void GameScene::processInput(ALLEGRO_EVENT& event){
 }
 
 void GameScene::update(double dt){
-	player->update(dt, keyboardState);
+	player->update(dt, keyboardState, bullets);
 	for (auto& asteroid : asteroids) asteroid->update(dt);
+	for (auto& bullet : bullets) bullet->update(dt);
 
 	asteroidsSpawn(dt);
 
@@ -59,6 +63,8 @@ void GameScene::render(double lag) const{
 
 	player->render(lag);
 	for (auto& asteroid : asteroids) asteroid->render(lag);
+	for (auto& bullet : bullets) bullet->render(lag);
+	printf("Bullets: %d\n", (int)bullets.size());
 }
 
 void GameScene::asteroidsSpawn(double dt) {
@@ -75,4 +81,10 @@ void GameScene::asteroidsSpawn(double dt) {
 
 void GameScene::colissionsHandling() {
 	
+	for (int i = 0; i < bullets.size(); i++) {
+		if (bullets[i]->shouldBeRemoved(App::getDisplayWidth(), App::getDisplayHeight())) {
+			bullets.erase(bullets.begin() + i);
+			i--;
+		}
+	}
 }
