@@ -16,9 +16,11 @@
 #define MAX_V 200
 #define MAX_THETA_V 20
 
+#define POINTS_FOR_BREAK 100
+
 #define PI 3.14159265359f
 
-Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Object& player, float r) : mass(PI * r * r) {
+Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Object& player, float r) : radius(r) {
 	int noSides = rand() % (MAX_SIDES - MIN_SIDES) + MIN_SIDES;
 	Vector2D* shape = new Vector2D[noSides];
 	Vector2D D(0, -r);
@@ -71,6 +73,39 @@ Asteroid::Asteroid(unsigned int displayWidth, unsigned int displayHeight, Object
 	P = candidatePoints[rand() % candidatePoints.size()];
 }
 
+Asteroid::Asteroid(Vector2D P, float r) : radius(r) {
+	this->P = P;
+	int noSides = rand() % (MAX_SIDES - MIN_SIDES) + MIN_SIDES;
+	Vector2D* shape = new Vector2D[noSides];
+	Vector2D D(0, -r);
+
+	float prevSteepnes = 0;
+	for (int i = 0; i < noSides; i++) {
+		float currSteepness; //Current steepness;
+		do {
+			shape[i] = D;
+			shape[i] *= 1 + DEVIATION * ((float)rand() / RAND_MAX * 2 - 1);
+			D.rotate(2.0f * PI / noSides);
+			if (i == 0) currSteepness = -1;
+			else {
+				currSteepness = (shape[i].y - shape[i - 1].y) / (shape[i].x - shape[i - 1].x);
+			}
+		} while (prevSteepnes == currSteepness);
+		prevSteepnes = currSteepness;
+	}
+	polygon = new Polygon(noSides, shape);
+
+	V = Vector2D(0, -MAX_V * (float)rand() / RAND_MAX);
+	V.y = fminf(-MIN_V, V.y);
+	V.rotate(2.0f * PI * (float)rand() / RAND_MAX);
+
+	theta = 0;
+	theta_v = (float)rand() / RAND_MAX * MAX_THETA_V / r;
+
+	lineThickness = 3;
+	colour = al_map_rgb(rand() % 192 + 64, rand() % 192 + 64, rand() % 192 + 64);
+}
+
 Asteroid::~Asteroid(){
 	delete polygon;
 }
@@ -98,4 +133,15 @@ Asteroid* Asteroid::AsteroidFactory(unsigned int displayWidth, unsigned int disp
 	float r = ((float)rand() / RAND_MAX) * (fminf(MAX_SPAWN_RADIUS, radiusAvailable) - MIN_SPAWN_RADIUS) + MIN_SPAWN_RADIUS;
 	radiusAvailable -= r;
 	return new Asteroid(displayWidth, displayHeight, player, r);
+}
+
+void Asteroid::AsteroidBreak(unsigned int displayWidth, unsigned int displayHeight, std::vector<Asteroid*>& asteroids, float& radiusAvailable, unsigned long long int& score) {
+	if (this->radius / 2 < MIN_RADIUS) {
+		radiusAvailable += this->radius;
+		score += POINTS_FOR_BREAK;
+	}
+	else {
+		asteroids.push_back(new Asteroid(this->P, this->radius / 2));
+		asteroids.push_back(new Asteroid(this->P, this->radius / 2));
+	}
 }

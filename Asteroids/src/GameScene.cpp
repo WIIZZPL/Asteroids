@@ -64,7 +64,8 @@ void GameScene::render(double lag) const{
 	player->render(lag);
 	for (auto& asteroid : asteroids) asteroid->render(lag);
 	for (auto& bullet : bullets) bullet->render(lag);
-	printf("Bullets: %d\n", (int)bullets.size());
+	
+	//TODO SCORE
 }
 
 void GameScene::asteroidsSpawn(double dt) {
@@ -80,7 +81,25 @@ void GameScene::asteroidsSpawn(double dt) {
 }
 
 void GameScene::colissionsHandling() {
-	
+
+	for (int i = 0; i < asteroids.size(); i++) {
+		for (int j = 0; j < bullets.size(); j++) {
+			if (i < asteroids.size() && Object::colissionObjectObject(*asteroids[i], *bullets[j])) {
+				asteroids[i]->AsteroidBreak(App::getDisplayWidth(), App::getDisplayHeight(), asteroids, radiusAvailable, score);
+				delete asteroids[i];
+				delete bullets[j];
+				asteroids.erase(asteroids.begin() + i);
+				bullets.erase(bullets.begin() + j);
+				i--;
+				j--;
+			}
+		}
+
+		if (i < asteroids.size() && Object::colissionObjectObject(*asteroids[i], *player)) {
+			
+		}
+	}
+
 	for (int i = 0; i < bullets.size(); i++) {
 		if (bullets[i]->shouldBeRemoved(App::getDisplayWidth(), App::getDisplayHeight())) {
 			bullets.erase(bullets.begin() + i);

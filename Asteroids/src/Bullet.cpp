@@ -36,5 +36,5 @@ void Bullet::render(float lag) const{
 }
 
 bool Bullet::shouldBeRemoved(unsigned int displayWidth, unsigned int displayHeight){
-	return !polygon->isVisible(P, theta, displayWidth, displayWidth);
+	return !polygon->isVisible(P, theta, displayWidth, displayHeight);
 }

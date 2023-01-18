@@ -145,7 +145,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Desktop\Asteroids\Asteroids\src;C:\Users\WIIZZ\Desktop\Asteroids\Asteroids\inc;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,7 +161,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\WIIZZ\Desktop\Asteroids\Asteroids\src;C:\Users\WIIZZ\Desktop\Asteroids\Asteroids\inc;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
