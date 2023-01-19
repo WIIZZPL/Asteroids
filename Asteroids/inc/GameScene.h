@@ -5,15 +5,17 @@
 
 #include "Scene.h"
 
+#include "Barrier.h"
+
 class Player;
 class Asteroid;
 class Bullet;
-class Polygon;
 
 class GameScene : public Scene {
 private:
 	static char keyboardState[];
-	const ALLEGRO_COLOR backgroundColor = al_map_rgb(0, 0, 0);
+	const ALLEGRO_COLOR backgroundColour = al_map_rgb(0, 0, 0);
+	const ALLEGRO_COLOR textColour = al_map_rgb(255, 255, 255);
 
 	unsigned long long int score;
 
@@ -25,6 +27,8 @@ private:
 	float asteroidTimer;
 
 	std::vector<Bullet*> bullets;
+
+	Barrier barrier;
 
 	void asteroidsSpawn(double dt);
 	void colissionsHandling();

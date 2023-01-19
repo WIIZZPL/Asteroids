@@ -17,6 +17,6 @@ public:
 	void update(float dt, char* keyboardState, std::vector<Bullet*>& bullets);
 	void render(float lag) const;
 
-	friend struct CollisionResponce;
+	void reset();
 };
 

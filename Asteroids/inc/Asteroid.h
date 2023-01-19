@@ -19,6 +19,8 @@ public:
 	static Asteroid* AsteroidFactory(unsigned int displayWidth, unsigned int displayHeight, Object& player, float& radiusAvailable);
 	void AsteroidBreak(unsigned int displayWidth, unsigned int displayHeight, std::vector<Asteroid*>& asteroids, float& radiusAvailable, unsigned long long int& score);
 
+	float getRadius() { return radius; }
+
 	friend struct ColisionResponce;
 };
 

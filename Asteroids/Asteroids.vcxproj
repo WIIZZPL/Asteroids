@@ -22,6 +22,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Barrier.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\App.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\Barrier.h" />
     <ClInclude Include="inc\Bullet.h" />
     <ClInclude Include="inc\Object.h" />
     <ClInclude Include="inc\App.h" />

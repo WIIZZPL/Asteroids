@@ -16,7 +16,7 @@
 #define MAX_V 200
 #define MAX_THETA_V 20
 
-#define POINTS_FOR_BREAK 100
+#define POINTS_FOR_BREAK 10
 
 #define PI 3.14159265359f
 
@@ -138,7 +138,7 @@ Asteroid* Asteroid::AsteroidFactory(unsigned int displayWidth, unsigned int disp
 void Asteroid::AsteroidBreak(unsigned int displayWidth, unsigned int displayHeight, std::vector<Asteroid*>& asteroids, float& radiusAvailable, unsigned long long int& score) {
 	if (this->radius / 2 < MIN_RADIUS) {
 		radiusAvailable += this->radius;
-		score += POINTS_FOR_BREAK;
+		score += POINTS_FOR_BREAK * this->radius;
 	}
 	else {
 		asteroids.push_back(new Asteroid(this->P, this->radius / 2));

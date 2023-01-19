@@ -4,6 +4,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_ttf.h>
 #include "GameScene.h"
 
 App App::instance;
@@ -14,12 +15,17 @@ App::App(){
 	try {
 		if (!al_init()) throw "Allegro init";
 		if (!al_init_primitives_addon()) throw "Allegro primitives addon";
+		if (!al_init_font_addon()) throw "Allegro font addon";               
+		if (!al_init_ttf_addon()) throw "Allegro ttf addon";
 		if (!al_install_audio()) throw "audio";
 		if (!al_install_keyboard()) throw "keyboard";
 		if (!al_install_mouse()) throw "mouse";
 
 		display = al_create_display(displayWidth, displayHeight);
 		if (!display) throw "display";
+
+		font = al_load_font("font.ttf", 50, NULL);
+		if (!font) throw "font";
 
 		eventQueue = al_create_event_queue();
 		if (!eventQueue) throw "event queue";
@@ -95,6 +101,10 @@ unsigned int App::getDisplayWidth() {
 
 unsigned int App::getDisplayHeight() {
 	return App::displayHeight;
+}
+
+ALLEGRO_FONT* App::getFont(){
+	return font;
 }
 
 void App::setNextScene(sceneIDs nextScene){

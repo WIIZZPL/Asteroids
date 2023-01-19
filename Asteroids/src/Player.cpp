@@ -93,3 +93,11 @@ void Player::render(float lag) const{
 	Vector2D p = Vector2D(P) + V * lag;
 	polygon->draw(p, theta, colour, lineThickness);
 }
+
+void Player::reset(){
+	P = Vector2D(App::getDisplayWidth() / 2, App::getDisplayHeight() / 2);
+	D = Vector2D(0, -1);
+	V = Vector2D();
+	A = Vector2D();
+	theta = 0;
+}

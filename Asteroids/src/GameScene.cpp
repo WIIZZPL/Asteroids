@@ -6,6 +6,9 @@
 #include "Asteroid.h"
 #include "Bullet.h"
 
+#include "allegro5/allegro_font.h"
+#include "allegro5/allegro_ttf.h"
+
 #define STARTING_LIVES 3
 #define MAX_TOTAL_RADIUS 1000
 #define NEW_ASTEROID_TIMER 5
@@ -43,7 +46,6 @@ void GameScene::processInput(ALLEGRO_EVENT& event){
 		else if (event.type == ALLEGRO_EVENT_KEY_UP) {
 			keyboardState[event.keyboard.keycode] = keyboardState[event.keyboard.keycode] ^ 1;
 			if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) App::getInstance().stop();
-			if (event.keyboard.keycode == ALLEGRO_KEY_SPACE) continue;
 		}
 	} while (false);
 }
@@ -59,13 +61,16 @@ void GameScene::update(double dt){
 }
 
 void GameScene::render(double lag) const{
-	al_clear_to_color(backgroundColor);
+	al_clear_to_color(backgroundColour);
 
 	player->render(lag);
 	for (auto& asteroid : asteroids) asteroid->render(lag);
 	for (auto& bullet : bullets) bullet->render(lag);
+	barrier.render(lag);
 	
-	//TODO SCORE
+	ALLEGRO_FONT* font = App::getInstance().getFont();
+	al_draw_textf(font, textColour, 25, 15, NULL, "Points: %d", score);
+	al_draw_textf(font, textColour, 25, 75, NULL, "Lives: %d", lives);
 }
 
 void GameScene::asteroidsSpawn(double dt) {
@@ -83,6 +88,21 @@ void GameScene::asteroidsSpawn(double dt) {
 void GameScene::colissionsHandling() {
 
 	for (int i = 0; i < asteroids.size(); i++) {
+		
+		if (barrier.isActive() && Object::colissionObjectObject(*asteroids[i], barrier)) {
+			float radius = asteroids[i]->getRadius();
+			delete asteroids[i];
+			asteroids.erase(asteroids.begin() + i);
+			asteroids.push_back(new Asteroid(App::getDisplayWidth(), App::getDisplayHeight(), *player, radius));
+			continue;
+		}
+
+		if (Object::colissionObjectObject(*asteroids[i], *player)) {
+			if (--lives == 0) App::getInstance().stop();
+			barrier.toggle();
+			player->reset();
+		}
+
 		for (int j = 0; j < bullets.size(); j++) {
 			if (i < asteroids.size() && Object::colissionObjectObject(*asteroids[i], *bullets[j])) {
 				asteroids[i]->AsteroidBreak(App::getDisplayWidth(), App::getDisplayHeight(), asteroids, radiusAvailable, score);
@@ -94,10 +114,6 @@ void GameScene::colissionsHandling() {
 				j--;
 			}
 		}
-
-		if (i < asteroids.size() && Object::colissionObjectObject(*asteroids[i], *player)) {
-			
-		}
 	}
 
 	for (int i = 0; i < bullets.size(); i++) {
@@ -105,5 +121,13 @@ void GameScene::colissionsHandling() {
 			bullets.erase(bullets.begin() + i);
 			i--;
 		}
+	}
+
+	
+	if (barrier.isActive()) {
+		if (!Object::colissionObjectObject(barrier, *player))
+			barrier.toggle();
+		else if (bullets.size() > 0 && !Object::colissionObjectObject(barrier, *bullets.back()))
+			barrier.toggle();
 	}
 }
