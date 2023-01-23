@@ -6,11 +6,11 @@
 
 struct ALLEGRO_DISPLAY;
 struct ALLEGRO_EVENT_QUEUE;
-struct ALLEGRO_FONT;
 class Scene;
 
 enum class sceneIDs {
-	GAME = 0,
+	INVALID,
+	GAME,
 	MENU,
 	GAME_END,
 	HIGHSCORE
@@ -24,8 +24,6 @@ private:
 
 	static unsigned int displayWidth, displayHeight;
 	ALLEGRO_DISPLAY* display;
-
-	ALLEGRO_FONT* font;
 
 	double FPS[FPSn]{};
 	int FPSi;
@@ -54,8 +52,6 @@ public:
 
 	static unsigned int getDisplayWidth();
 	static unsigned int getDisplayHeight();
-	
-	ALLEGRO_FONT* getFont();
 
 	void setNextScene(sceneIDs nextScene);
 

@@ -5,7 +5,9 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_ttf.h>
+
 #include "GameScene.h"
+#include "MenuScene.h"
 
 App App::instance;
 unsigned int App::displayWidth = 1280;
@@ -23,9 +25,6 @@ App::App(){
 
 		display = al_create_display(displayWidth, displayHeight);
 		if (!display) throw "display";
-
-		font = al_load_font("font.ttf", 50, NULL);
-		if (!font) throw "font";
 
 		eventQueue = al_create_event_queue();
 		if (!eventQueue) throw "event queue";
@@ -49,10 +48,10 @@ App::App(){
 	accumulatedTime = 0;
 
 	running = false;
-	currentScene = sceneIDs::GAME;
-	nextScene = sceneIDs::GAME;
+	currentScene = sceneIDs::INVALID;
+	nextScene = sceneIDs::MENU;
 
-	scene = new GameScene();
+	scene = nullptr;
 }
 
 App& App::getInstance(){
@@ -103,10 +102,6 @@ unsigned int App::getDisplayHeight() {
 	return App::displayHeight;
 }
 
-ALLEGRO_FONT* App::getFont(){
-	return font;
-}
-
 void App::setNextScene(sceneIDs nextScene){
 	this->nextScene = nextScene;
 }
@@ -114,9 +109,15 @@ void App::setNextScene(sceneIDs nextScene){
 void App::sceneSwitch() {
 	if (currentScene != nextScene) {
 
+		delete scene;
+
 		switch(nextScene){
 		case sceneIDs::GAME:
 			scene = new GameScene();
+			break;
+		case sceneIDs::MENU:
+			scene = new MenuScene();
+			break;
 		default:
 			exit(555);
 		}
@@ -142,7 +143,7 @@ void App::update(double dt) {
 }
 
 void App::render(double lag) const {
-	al_clear_to_color(al_map_rgb(255, 0, 255));
+	al_clear_to_color(al_map_rgb(0, 0, 0));
 
 	scene->render(lag);
 

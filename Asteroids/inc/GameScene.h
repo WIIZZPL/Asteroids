@@ -10,12 +10,14 @@
 class Player;
 class Asteroid;
 class Bullet;
+struct ALLEGRO_FONT;
 
 class GameScene : public Scene {
 private:
 	static char keyboardState[];
 	const ALLEGRO_COLOR backgroundColour = al_map_rgb(0, 0, 0);
 	const ALLEGRO_COLOR textColour = al_map_rgb(255, 255, 255);
+	ALLEGRO_FONT* font;
 
 	unsigned long long int score;
 

@@ -19,6 +19,7 @@ public:
 	Vector2D getCentrePoint(float angle);
 
 	void draw(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColour, float lineThickness) const;
+	void draw(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColour, float lineThickness, const ALLEGRO_COLOR& fillColour) const;
 	void drawWireFrame(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColour, float lineThickness) const;
 
 	bool isVisible(const Vector2D& P, float angle, unsigned int displayWidth, unsigned int displayHeight, float margin = 0) const;

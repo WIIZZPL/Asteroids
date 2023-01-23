@@ -60,11 +60,17 @@
     <ClCompile Include="src\Bullet.cpp">
       <Filter>Pliki źródłowe\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Barrier.cpp">
-      <Filter>Pliki źródłowe\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Object.cpp">
       <Filter>Pliki źródłowe\Base Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MenuScene.cpp">
+      <Filter>Pliki źródłowe\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Barrier.cpp">
+      <Filter>Pliki źródłowe\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Button.cpp">
+      <Filter>Pliki źródłowe\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="inc\Object.h">
       <Filter>Pliki nagłówkowe\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\MenuScene.h">
+      <Filter>Pliki nagłówkowe\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Button.h">
+      <Filter>Pliki nagłówkowe\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

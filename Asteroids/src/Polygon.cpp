@@ -97,6 +97,16 @@ void Polygon::draw(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColo
 	al_draw_line(t.x, t.y, t1.x, t1.y, lineColour, lineThickness);
 }
 
+void Polygon::draw(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColour, float lineThickness, const ALLEGRO_COLOR& fillColour) const{
+	for (int i = 0; i < (size - 2) * 3; i += 3) {
+		Vector2D A = wireframe[i]->rotated(angle) + P;
+		Vector2D B = wireframe[i+1]->rotated(angle) + P;
+		Vector2D C = wireframe[i+2]->rotated(angle) + P;
+		al_draw_filled_triangle(A.x, A.y, B.x, B.y, C.x, C.y, fillColour);
+	}
+	this->draw(P, angle, lineColour, lineThickness);
+}
+
 void Polygon::drawWireFrame(const Vector2D& P, float angle, const ALLEGRO_COLOR& lineColour, float lineThickness) const {
 	for (int i = 0; i < (size - 2) * 3; i += 3) {
 		Vector2D A = wireframe[i]->rotated(angle) + P;

@@ -22,8 +22,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Barrier.cpp" />
+    <ClCompile Include="src\Barrier.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
+    <ClCompile Include="src\Button.cpp" />
+    <ClCompile Include="src\MenuScene.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Asteroid.cpp" />
@@ -36,6 +38,8 @@
   <ItemGroup>
     <ClInclude Include="inc\Barrier.h" />
     <ClInclude Include="inc\Bullet.h" />
+    <ClInclude Include="inc\Button.h" />
+    <ClInclude Include="inc\MenuScene.h" />
     <ClInclude Include="inc\Object.h" />
     <ClInclude Include="inc\App.h" />
     <ClInclude Include="inc\Asteroid.h" />
@@ -166,7 +170,7 @@
       <AdditionalIncludeDirectories>C:\Users\WIIZZ\Desktop\Asteroids\Asteroids\src;C:\Users\WIIZZ\Desktop\Asteroids\Asteroids\inc;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\src;C:\Users\WIIZZ\Documents\Repos\Asteroids\Asteroids\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>

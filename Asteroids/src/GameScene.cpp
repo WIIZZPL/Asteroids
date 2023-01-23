@@ -30,12 +30,15 @@ GameScene::GameScene(){
 		if (newAsteroid != nullptr) asteroids.push_back(newAsteroid);
 	}
 
+	font = al_load_font("font.ttf", 50, NULL);
+	if (!font) exit(2);
 }
 
 GameScene::~GameScene(){
 	delete player;
 	for (auto& asteroid : asteroids) delete asteroid;
 	for (auto& bullet : bullets) delete bullet;
+	al_destroy_font(font);
 }
 
 void GameScene::processInput(ALLEGRO_EVENT& event){
@@ -45,7 +48,7 @@ void GameScene::processInput(ALLEGRO_EVENT& event){
 		}
 		else if (event.type == ALLEGRO_EVENT_KEY_UP) {
 			keyboardState[event.keyboard.keycode] = keyboardState[event.keyboard.keycode] ^ 1;
-			if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) App::getInstance().stop();
+			if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) App::getInstance().setNextScene(sceneIDs::MENU);
 		}
 	} while (false);
 }
@@ -68,9 +71,8 @@ void GameScene::render(double lag) const{
 	for (auto& bullet : bullets) bullet->render(lag);
 	barrier.render(lag);
 	
-	ALLEGRO_FONT* font = App::getInstance().getFont();
 	al_draw_textf(font, textColour, 25, 15, NULL, "Points: %d", score);
-	al_draw_textf(font, textColour, 25, 75, NULL, "Lives: %d", lives);
+	al_draw_textf(font, textColour, 25, 75, NULL, " Lives: %d", lives);
 }
 
 void GameScene::asteroidsSpawn(double dt) {
@@ -98,9 +100,13 @@ void GameScene::colissionsHandling() {
 		}
 
 		if (Object::colissionObjectObject(*asteroids[i], *player)) {
-			if (--lives == 0) App::getInstance().stop();
+			if (--lives == 0) App::getInstance().setNextScene(sceneIDs::MENU);
 			barrier.toggle();
 			player->reset();
+			while (bullets.size() > 0 && Object::colissionObjectObject(barrier, *bullets.back())){
+				delete bullets.back();
+				bullets.pop_back();
+			}
 		}
 
 		for (int j = 0; j < bullets.size(); j++) {
@@ -127,7 +133,7 @@ void GameScene::colissionsHandling() {
 	if (barrier.isActive()) {
 		if (!Object::colissionObjectObject(barrier, *player))
 			barrier.toggle();
-		else if (bullets.size() > 0 && !Object::colissionObjectObject(barrier, *bullets.back()))
+		else if (bullets.size() > 0 && Object::colissionObjectObject(barrier, *bullets.back()))
 			barrier.toggle();
 	}
 }
