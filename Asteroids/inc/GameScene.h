@@ -12,6 +12,10 @@ class Asteroid;
 class Bullet;
 struct ALLEGRO_FONT;
 
+/// <summary>
+/// Scena gry faktycznej. Przechowuje gracza, asteroidy, pociski, barierê, iloœæ ¿yæ i punktów, oraz iloœæ dostêpnej œrednicy dla Asteroid.
+/// @see scene
+/// </summary>
 class GameScene : public Scene {
 private:
 	static char keyboardState[];

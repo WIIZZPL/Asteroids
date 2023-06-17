@@ -9,7 +9,6 @@ Button::Button(Vector2D P, Vector2D D, const ALLEGRO_FONT* font, const char str[
 	lineThickness = 2;
 
 	this->P = P;
-	this->D = D;
 
 	Vector2D* points = new Vector2D[4];
 	points[0] = Vector2D(0-D/2);

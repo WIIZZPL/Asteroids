@@ -135,7 +135,7 @@ Asteroid* Asteroid::AsteroidFactory(unsigned int displayWidth, unsigned int disp
 	return new Asteroid(displayWidth, displayHeight, player, r);
 }
 
-void Asteroid::AsteroidBreak(unsigned int displayWidth, unsigned int displayHeight, std::vector<Asteroid*>& asteroids, float& radiusAvailable, unsigned long long int& score) {
+void Asteroid::AsteroidBreak(std::vector<Asteroid*>& asteroids, float& radiusAvailable, unsigned long long int& score) {
 	if (this->radius / 2 < MIN_RADIUS) {
 		radiusAvailable += this->radius;
 		score += POINTS_FOR_BREAK * this->radius;

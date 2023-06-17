@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Asteroids: Plik źródłowy Asteroids/inc/Object.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Asteroids<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Gra asteroid - Projekt PŚk PwjC2</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_object_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Object.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_object_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;allegro5/allegro.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_polygon_8h.html">Polygon.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_object.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="class_object.html">Object</a>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_object.html#ade2ddc787cb2bd7792423e3789b49c70">   14</a></span>    <a class="code hl_class" href="class_polygon.html">Polygon</a>* <a class="code hl_variable" href="class_object.html#ade2ddc787cb2bd7792423e3789b49c70">polygon</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_object.html#ac12de5dd203e6d8da4d14a168fb57205">   18</a></span>    <a class="code hl_struct" href="struct_vector2_d.html">Vector2D</a> <a class="code hl_variable" href="class_object.html#ac12de5dd203e6d8da4d14a168fb57205">P</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_object.html#a1c7009ac726a188a74a564085177952c">   22</a></span>    <a class="code hl_struct" href="struct_vector2_d.html">Vector2D</a> <a class="code hl_variable" href="class_object.html#a1c7009ac726a188a74a564085177952c">D</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="class_object.html#acc29451e746c37eb8a3ac559d9818ecf">   26</a></span>    <a class="code hl_struct" href="struct_vector2_d.html">Vector2D</a> <a class="code hl_variable" href="class_object.html#acc29451e746c37eb8a3ac559d9818ecf">V</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">   30</a></span>    <a class="code hl_struct" href="struct_vector2_d.html">Vector2D</a> <a class="code hl_variable" href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">A</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_object.html#aedd4fe07373c876e2e7ffe63b536c51e">   34</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="class_object.html#aedd4fe07373c876e2e7ffe63b536c51e">theta</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_object.html#a3980973fca4cfcb42c833c462864b651">   38</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="class_object.html#a3980973fca4cfcb42c833c462864b651">theta_v</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_object.html#a6501e78cf08db8976eb28d5cc5a335e9">   42</a></span>    ALLEGRO_COLOR <a class="code hl_variable" href="class_object.html#a6501e78cf08db8976eb28d5cc5a335e9">colour</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_object.html#a6d993b3b6763f63659af3449f4026f1e">   46</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="class_object.html#a6d993b3b6763f63659af3449f4026f1e">lineThickness</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_object.html#a9dd7012d1954acfcb5ae36c43a799053">colissionObjectPoint</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_object.html">Object</a>&amp; <a class="code hl_variable" href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">A</a>, <span class="keyword">const</span> <a class="code hl_struct" href="struct_vector2_d.html">Vector2D</a>&amp; B);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_object.html#a59a115f2e9cb760963cd1ad5703cdca1">colissionObjectObject</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_object.html">Object</a>&amp; <a class="code hl_variable" href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">A</a>, <span class="keyword">const</span> <a class="code hl_class" href="class_object.html">Object</a>&amp; B);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_object.html#a4b099ce046b5e10c63595e18ea6b8d67">wrapAroundScreen</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> displayWidth, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> displayHeight);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="ttc" id="a_polygon_8h_html"><div class="ttname"><a href="_polygon_8h.html">Polygon.h</a></div></div>
+<div class="ttc" id="aclass_object_html"><div class="ttname"><a href="class_object.html">Object</a></div><div class="ttdoc">Klasa bazowa obiekt.</div><div class="ttdef"><b>Definition:</b> Object.h:9</div></div>
+<div class="ttc" id="aclass_object_html_a1c7009ac726a188a74a564085177952c"><div class="ttname"><a href="class_object.html#a1c7009ac726a188a74a564085177952c">Object::D</a></div><div class="ttdeci">Vector2D D</div><div class="ttdoc">Vector2D kierunku ruchu/rozmiaru.</div><div class="ttdef"><b>Definition:</b> Object.h:22</div></div>
+<div class="ttc" id="aclass_object_html_a3980973fca4cfcb42c833c462864b651"><div class="ttname"><a href="class_object.html#a3980973fca4cfcb42c833c462864b651">Object::theta_v</a></div><div class="ttdeci">float theta_v</div><div class="ttdoc">Prędkość obrócenia.</div><div class="ttdef"><b>Definition:</b> Object.h:38</div></div>
+<div class="ttc" id="aclass_object_html_a4b099ce046b5e10c63595e18ea6b8d67"><div class="ttname"><a href="class_object.html#a4b099ce046b5e10c63595e18ea6b8d67">Object::wrapAroundScreen</a></div><div class="ttdeci">void wrapAroundScreen(unsigned int displayWidth, unsigned int displayHeight)</div><div class="ttdoc">Obwija obiekt do okoła ekranu.</div><div class="ttdef"><b>Definition:</b> Object.cpp:11</div></div>
+<div class="ttc" id="aclass_object_html_a59a115f2e9cb760963cd1ad5703cdca1"><div class="ttname"><a href="class_object.html#a59a115f2e9cb760963cd1ad5703cdca1">Object::colissionObjectObject</a></div><div class="ttdeci">static bool colissionObjectObject(const Object &amp;A, const Object &amp;B)</div><div class="ttdoc">Fukcja sprawdzająca kolizję między obiektem a innym obiektem.</div><div class="ttdef"><b>Definition:</b> Object.cpp:7</div></div>
+<div class="ttc" id="aclass_object_html_a6501e78cf08db8976eb28d5cc5a335e9"><div class="ttname"><a href="class_object.html#a6501e78cf08db8976eb28d5cc5a335e9">Object::colour</a></div><div class="ttdeci">ALLEGRO_COLOR colour</div><div class="ttdoc">Kolor boków poligonu.</div><div class="ttdef"><b>Definition:</b> Object.h:42</div></div>
+<div class="ttc" id="aclass_object_html_a6d993b3b6763f63659af3449f4026f1e"><div class="ttname"><a href="class_object.html#a6d993b3b6763f63659af3449f4026f1e">Object::lineThickness</a></div><div class="ttdeci">float lineThickness</div><div class="ttdoc">Grubość lini poligonu.</div><div class="ttdef"><b>Definition:</b> Object.h:46</div></div>
+<div class="ttc" id="aclass_object_html_a9dd7012d1954acfcb5ae36c43a799053"><div class="ttname"><a href="class_object.html#a9dd7012d1954acfcb5ae36c43a799053">Object::colissionObjectPoint</a></div><div class="ttdeci">static bool colissionObjectPoint(const Object &amp;A, const Vector2D &amp;B)</div><div class="ttdoc">Fukcja sprawdzająca kolizję między obiektem a punktem.</div><div class="ttdef"><b>Definition:</b> Object.cpp:3</div></div>
+<div class="ttc" id="aclass_object_html_ac12de5dd203e6d8da4d14a168fb57205"><div class="ttname"><a href="class_object.html#ac12de5dd203e6d8da4d14a168fb57205">Object::P</a></div><div class="ttdeci">Vector2D P</div><div class="ttdoc">Vector2D pozycji.</div><div class="ttdef"><b>Definition:</b> Object.h:18</div></div>
+<div class="ttc" id="aclass_object_html_acc29451e746c37eb8a3ac559d9818ecf"><div class="ttname"><a href="class_object.html#acc29451e746c37eb8a3ac559d9818ecf">Object::V</a></div><div class="ttdeci">Vector2D V</div><div class="ttdoc">Vector2D prędkości.</div><div class="ttdef"><b>Definition:</b> Object.h:26</div></div>
+<div class="ttc" id="aclass_object_html_ade2ddc787cb2bd7792423e3789b49c70"><div class="ttname"><a href="class_object.html#ade2ddc787cb2bd7792423e3789b49c70">Object::polygon</a></div><div class="ttdeci">Polygon * polygon</div><div class="ttdoc">Wskaźnik na obiekt Polygon.</div><div class="ttdef"><b>Definition:</b> Object.h:14</div></div>
+<div class="ttc" id="aclass_object_html_aedd4fe07373c876e2e7ffe63b536c51e"><div class="ttname"><a href="class_object.html#aedd4fe07373c876e2e7ffe63b536c51e">Object::theta</a></div><div class="ttdeci">float theta</div><div class="ttdoc">Zmienna przechowująca obrócenie poligonu.</div><div class="ttdef"><b>Definition:</b> Object.h:34</div></div>
+<div class="ttc" id="aclass_object_html_afbd5c8ab8d6a0083b46b03b43f109a46"><div class="ttname"><a href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">Object::A</a></div><div class="ttdeci">Vector2D A</div><div class="ttdoc">Vector2D przyspieszenia.</div><div class="ttdef"><b>Definition:</b> Object.h:30</div></div>
+<div class="ttc" id="aclass_polygon_html"><div class="ttname"><a href="class_polygon.html">Polygon</a></div><div class="ttdoc">Klasa poligonu.</div><div class="ttdef"><b>Definition:</b> Polygon.h:11</div></div>
+<div class="ttc" id="astruct_vector2_d_html"><div class="ttname"><a href="struct_vector2_d.html">Vector2D</a></div><div class="ttdoc">Struktura Wektora dwuwymiarowego.</div><div class="ttdef"><b>Definition:</b> Vector2D.h:6</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_fa7062cc1bc805831dd5a05a3aa69e55.html">Asteroids</a></li><li class="navelem"><a class="el" href="dir_bf7c5a2d167ce03d723f0a0a3d8d1461.html">inc</a></li><li class="navelem"><a class="el" href="_object_8h.html">Object.h</a></li>
+    <li class="footer">Wygenerowano przez <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

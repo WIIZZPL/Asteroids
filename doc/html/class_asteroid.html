@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Asteroids: Dokumentacja klasy Asteroid</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Asteroids<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Gra asteroid - Projekt PŚk PwjC2</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_asteroid.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="class_asteroid-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy Asteroid</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa asteroidy.  
+ <a href="class_asteroid.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_asteroid_8h_source.html">Asteroid.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram dziedziczenia dla Asteroid</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_asteroid.png" usemap="#Asteroid_map" alt=""/>
+  <map id="Asteroid_map" name="Asteroid_map">
+<area href="class_object.html" title="Klasa bazowa obiekt." alt="Object" shape="rect" coords="0,0,59,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a687d13c6c650416fb2abb26e450f3087"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#a687d13c6c650416fb2abb26e450f3087">Asteroid</a> (unsigned int displayWidth, unsigned int displayHeight, <a class="el" href="class_object.html">Object</a> &amp;player, float r)</td></tr>
+<tr class="memdesc:a687d13c6c650416fb2abb26e450f3087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor asteroidy - dla tworzenia.  <br /></td></tr>
+<tr class="separator:a687d13c6c650416fb2abb26e450f3087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd923411e7222ff1166567ad3f3d6fbc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#afd923411e7222ff1166567ad3f3d6fbc">Asteroid</a> (<a class="el" href="struct_vector2_d.html">Vector2D</a> <a class="el" href="class_object.html#ac12de5dd203e6d8da4d14a168fb57205">P</a>, float r)</td></tr>
+<tr class="memdesc:afd923411e7222ff1166567ad3f3d6fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor asterodiy - dla odłamków.  <br /></td></tr>
+<tr class="separator:afd923411e7222ff1166567ad3f3d6fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2d697c3722cfb1c79997b6cf63c89df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#af2d697c3722cfb1c79997b6cf63c89df">~Asteroid</a> ()</td></tr>
+<tr class="separator:af2d697c3722cfb1c79997b6cf63c89df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e01928c82d4f0ecfb488c3e19fde896"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#a4e01928c82d4f0ecfb488c3e19fde896">update</a> (float dt)</td></tr>
+<tr class="memdesc:a4e01928c82d4f0ecfb488c3e19fde896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uaktualnia stan asteroidy.  <br /></td></tr>
+<tr class="separator:a4e01928c82d4f0ecfb488c3e19fde896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8bc1573f876b37b386a453a888e1264"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#ac8bc1573f876b37b386a453a888e1264">render</a> (float lag) const</td></tr>
+<tr class="memdesc:ac8bc1573f876b37b386a453a888e1264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renderuje asteroidę.  <br /></td></tr>
+<tr class="separator:ac8bc1573f876b37b386a453a888e1264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2328f4414a0cf95f68e9b0a2998e6682"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#a2328f4414a0cf95f68e9b0a2998e6682">AsteroidBreak</a> (std::vector&lt; <a class="el" href="class_asteroid.html">Asteroid</a> * &gt; &amp;asteroids, float &amp;radiusAvailable, unsigned long long int &amp;score)</td></tr>
+<tr class="memdesc:a2328f4414a0cf95f68e9b0a2998e6682"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rozbija asteroidę.  <br /></td></tr>
+<tr class="separator:a2328f4414a0cf95f68e9b0a2998e6682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7045538aaa343478dc63c38427196db5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#a7045538aaa343478dc63c38427196db5">getRadius</a> ()</td></tr>
+<tr class="separator:a7045538aaa343478dc63c38427196db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_object')"><img src="closed.png" alt="-"/>&#160;Metody publiczne dziedziczone z <a class="el" href="class_object.html">Object</a></td></tr>
+<tr class="memitem:a4b099ce046b5e10c63595e18ea6b8d67 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a4b099ce046b5e10c63595e18ea6b8d67">wrapAroundScreen</a> (unsigned int displayWidth, unsigned int displayHeight)</td></tr>
+<tr class="memdesc:a4b099ce046b5e10c63595e18ea6b8d67 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obwija obiekt do okoła ekranu.  <br /></td></tr>
+<tr class="separator:a4b099ce046b5e10c63595e18ea6b8d67 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:af592d3036839149320e9c2069d29781a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_asteroid.html">Asteroid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asteroid.html#af592d3036839149320e9c2069d29781a">AsteroidFactory</a> (unsigned int displayWidth, unsigned int displayHeight, <a class="el" href="class_object.html">Object</a> &amp;player, float &amp;radiusAvailable)</td></tr>
+<tr class="memdesc:af592d3036839149320e9c2069d29781a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fabryka asteroid.  <br /></td></tr>
+<tr class="separator:af592d3036839149320e9c2069d29781a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_class_object"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_object')"><img src="closed.png" alt="-"/>&#160;Statyczne metody publiczne dziedziczone z <a class="el" href="class_object.html">Object</a></td></tr>
+<tr class="memitem:a9dd7012d1954acfcb5ae36c43a799053 inherit pub_static_methods_class_object"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a9dd7012d1954acfcb5ae36c43a799053">colissionObjectPoint</a> (const <a class="el" href="class_object.html">Object</a> &amp;<a class="el" href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">A</a>, const <a class="el" href="struct_vector2_d.html">Vector2D</a> &amp;B)</td></tr>
+<tr class="memdesc:a9dd7012d1954acfcb5ae36c43a799053 inherit pub_static_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fukcja sprawdzająca kolizję między obiektem a punktem.  <br /></td></tr>
+<tr class="separator:a9dd7012d1954acfcb5ae36c43a799053 inherit pub_static_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59a115f2e9cb760963cd1ad5703cdca1 inherit pub_static_methods_class_object"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a59a115f2e9cb760963cd1ad5703cdca1">colissionObjectObject</a> (const <a class="el" href="class_object.html">Object</a> &amp;<a class="el" href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">A</a>, const <a class="el" href="class_object.html">Object</a> &amp;B)</td></tr>
+<tr class="memdesc:a59a115f2e9cb760963cd1ad5703cdca1 inherit pub_static_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fukcja sprawdzająca kolizję między obiektem a innym obiektem.  <br /></td></tr>
+<tr class="separator:a59a115f2e9cb760963cd1ad5703cdca1 inherit pub_static_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Dodatkowe Dziedziczone Składowe</h2></td></tr>
+<tr class="inherit_header pro_attribs_class_object"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_object')"><img src="closed.png" alt="-"/>&#160;Atrybuty chronione dziedziczone z <a class="el" href="class_object.html">Object</a></td></tr>
+<tr class="memitem:ade2ddc787cb2bd7792423e3789b49c70 inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_polygon.html">Polygon</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ade2ddc787cb2bd7792423e3789b49c70">polygon</a></td></tr>
+<tr class="memdesc:ade2ddc787cb2bd7792423e3789b49c70 inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wskaźnik na obiekt <a class="el" href="class_polygon.html" title="Klasa poligonu.">Polygon</a>.  <br /></td></tr>
+<tr class="separator:ade2ddc787cb2bd7792423e3789b49c70 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac12de5dd203e6d8da4d14a168fb57205 inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vector2_d.html">Vector2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ac12de5dd203e6d8da4d14a168fb57205">P</a></td></tr>
+<tr class="memdesc:ac12de5dd203e6d8da4d14a168fb57205 inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_vector2_d.html" title="Struktura Wektora dwuwymiarowego.">Vector2D</a> pozycji.  <br /></td></tr>
+<tr class="separator:ac12de5dd203e6d8da4d14a168fb57205 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c7009ac726a188a74a564085177952c inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vector2_d.html">Vector2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a1c7009ac726a188a74a564085177952c">D</a></td></tr>
+<tr class="memdesc:a1c7009ac726a188a74a564085177952c inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_vector2_d.html" title="Struktura Wektora dwuwymiarowego.">Vector2D</a> kierunku ruchu/rozmiaru.  <br /></td></tr>
+<tr class="separator:a1c7009ac726a188a74a564085177952c inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc29451e746c37eb8a3ac559d9818ecf inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vector2_d.html">Vector2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#acc29451e746c37eb8a3ac559d9818ecf">V</a></td></tr>
+<tr class="memdesc:acc29451e746c37eb8a3ac559d9818ecf inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_vector2_d.html" title="Struktura Wektora dwuwymiarowego.">Vector2D</a> prędkości.  <br /></td></tr>
+<tr class="separator:acc29451e746c37eb8a3ac559d9818ecf inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd5c8ab8d6a0083b46b03b43f109a46 inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vector2_d.html">Vector2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#afbd5c8ab8d6a0083b46b03b43f109a46">A</a></td></tr>
+<tr class="memdesc:afbd5c8ab8d6a0083b46b03b43f109a46 inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_vector2_d.html" title="Struktura Wektora dwuwymiarowego.">Vector2D</a> przyspieszenia.  <br /></td></tr>
+<tr class="separator:afbd5c8ab8d6a0083b46b03b43f109a46 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd4fe07373c876e2e7ffe63b536c51e inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#aedd4fe07373c876e2e7ffe63b536c51e">theta</a></td></tr>
+<tr class="memdesc:aedd4fe07373c876e2e7ffe63b536c51e inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zmienna przechowująca obrócenie poligonu.  <br /></td></tr>
+<tr class="separator:aedd4fe07373c876e2e7ffe63b536c51e inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3980973fca4cfcb42c833c462864b651 inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a3980973fca4cfcb42c833c462864b651">theta_v</a></td></tr>
+<tr class="memdesc:a3980973fca4cfcb42c833c462864b651 inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prędkość obrócenia.  <br /></td></tr>
+<tr class="separator:a3980973fca4cfcb42c833c462864b651 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6501e78cf08db8976eb28d5cc5a335e9 inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top">ALLEGRO_COLOR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a6501e78cf08db8976eb28d5cc5a335e9">colour</a></td></tr>
+<tr class="memdesc:a6501e78cf08db8976eb28d5cc5a335e9 inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor boków poligonu.  <br /></td></tr>
+<tr class="separator:a6501e78cf08db8976eb28d5cc5a335e9 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d993b3b6763f63659af3449f4026f1e inherit pro_attribs_class_object"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a6d993b3b6763f63659af3449f4026f1e">lineThickness</a></td></tr>
+<tr class="memdesc:a6d993b3b6763f63659af3449f4026f1e inherit pro_attribs_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grubość lini poligonu.  <br /></td></tr>
+<tr class="separator:a6d993b3b6763f63659af3449f4026f1e inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa asteroidy. </p>
+</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="a687d13c6c650416fb2abb26e450f3087" name="a687d13c6c650416fb2abb26e450f3087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a687d13c6c650416fb2abb26e450f3087">&#9670;&#160;</a></span>Asteroid() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Asteroid::Asteroid </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>displayWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>displayHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_object.html">Object</a> &amp;&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Konstruktor asteroidy - dla tworzenia. </p>
+<p>Generowana jest w losowym miejscu poza ekranem, w odległości od gracza większej niż SAFETY_RADIUS. Prędkość i kierunek jest losowy, przyspieszenie zerowe. Kształtem asteroidy jest losowo wygenerowany wielokąt, ma on od MIN_SIDES do MAX_SIDES boków, a każdy kont jest oddalony od środka o radius +- DEVIATION.</p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">displayWidth</td><td>Szerokość ekranu w pikselach.</td></tr>
+    <tr><td class="paramname">displayHeight</td><td>Wysokość ekranu w pikselach.</td></tr>
+    <tr><td class="paramname">player</td><td>Referencja do gracza.</td></tr>
+    <tr><td class="paramname">r</td><td>Promień asteroidy</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afd923411e7222ff1166567ad3f3d6fbc" name="afd923411e7222ff1166567ad3f3d6fbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd923411e7222ff1166567ad3f3d6fbc">&#9670;&#160;</a></span>Asteroid() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Asteroid::Asteroid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_vector2_d.html">Vector2D</a>&#160;</td>
+          <td class="paramname"><em>P</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Konstruktor asterodiy - dla odłamków. </p>
+<p>Kształt asteroid jest generowany w ten sam sposób co dla <a class="el" href="class_asteroid.html#a687d13c6c650416fb2abb26e450f3087" title="Konstruktor asteroidy - dla tworzenia.">Asteroid(unsigned int displayWidth, unsigned int displayHeight, Object&amp; player, float r)</a>. Lecz pozycja jest podawana jako parametr.</p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">P</td><td>Pozycja asteroidy.</td></tr>
+    <tr><td class="paramname">r</td><td>Promień asteroidy</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af2d697c3722cfb1c79997b6cf63c89df" name="af2d697c3722cfb1c79997b6cf63c89df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2d697c3722cfb1c79997b6cf63c89df">&#9670;&#160;</a></span>~Asteroid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Asteroid::~Asteroid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a2328f4414a0cf95f68e9b0a2998e6682" name="a2328f4414a0cf95f68e9b0a2998e6682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2328f4414a0cf95f68e9b0a2998e6682">&#9670;&#160;</a></span>AsteroidBreak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Asteroid::AsteroidBreak </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_asteroid.html">Asteroid</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>asteroids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&#160;</td>
+          <td class="paramname"><em>radiusAvailable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long int &amp;&#160;</td>
+          <td class="paramname"><em>score</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rozbija asteroidę. </p>
+<p>Jeśli radius/2 &gt; MIN_RADIUS, tworzone są dwie nowe asteroidy o tym rozmiarze, na pozycji asteroidy, i zostają umieszczone w asteroids. W przeciwnym razie score jest zwiększany o POINTS_FOR_BREAK * radius, i radiusAvailable jest zwiększany o radius.</p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">asteroids</td><td>Referencja do vector'a wskaźników na asteroidy.</td></tr>
+    <tr><td class="paramname">radiusAvailable</td><td>Referencja do ilości dostępnego promienia.</td></tr>
+    <tr><td class="paramname">score</td><td>Referencja do licznika punktów.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af592d3036839149320e9c2069d29781a" name="af592d3036839149320e9c2069d29781a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af592d3036839149320e9c2069d29781a">&#9670;&#160;</a></span>AsteroidFactory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_asteroid.html">Asteroid</a> * Asteroid::AsteroidFactory </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>displayWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>displayHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_object.html">Object</a> &amp;&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&#160;</td>
+          <td class="paramname"><em>radiusAvailable</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fabryka asteroid. </p>
+<p>Sprawdza czy ilość dostępnego promienia (radiusAvailable) jest większa niż MIN_SPAWN_RADIUS. Jeśli nie, zwraca nullptr. W przeciwnym wypadku wybiera losową wartość z przedziału od MIN_SPAWN_RADIUS do min(MAX_SPAWN_RADIUS, radiusAvailable). Poczym zwraca wskaźnik na nową asteroidę o tym rozmiarze.</p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">displayWidth</td><td>Szerokość okna w pikselach.</td></tr>
+    <tr><td class="paramname">displayHeight</td><td>Wysokość okna w pikselach.</td></tr>
+    <tr><td class="paramname">player</td><td>Referencja do gracza.</td></tr>
+    <tr><td class="paramname">radiusAvailable</td><td>Referencja do dostępnej ilości promienia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>nullptr lub wskaźnik na nową asteroidę.</dd></dl>
+
+</div>
+</div>
+<a id="a7045538aaa343478dc63c38427196db5" name="a7045538aaa343478dc63c38427196db5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7045538aaa343478dc63c38427196db5">&#9670;&#160;</a></span>getRadius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Asteroid::getRadius </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8bc1573f876b37b386a453a888e1264" name="ac8bc1573f876b37b386a453a888e1264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8bc1573f876b37b386a453a888e1264">&#9670;&#160;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Asteroid::render </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>lag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renderuje asteroidę. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lag</td><td>Opóźnienie.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4e01928c82d4f0ecfb488c3e19fde896" name="a4e01928c82d4f0ecfb488c3e19fde896"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e01928c82d4f0ecfb488c3e19fde896">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Asteroid::update </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Uaktualnia stan asteroidy. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>krok czasu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_asteroid.html">Asteroid</a></li>
+    <li class="footer">Wygenerowano przez <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

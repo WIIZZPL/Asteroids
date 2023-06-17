@@ -9,6 +9,10 @@
 
 struct ALLEGRO_FONT;
 
+/// <summary>
+/// Scena menu. Posiada tytó³ gry oraz dwa przyciski, jeden do rozpoczêcia gry, drugi do wyjœcia.
+/// @see Scene
+/// </summary>
 class MenuScene : public Scene {
 private:
 	ALLEGRO_FONT* titleFont;

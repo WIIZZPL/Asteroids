@@ -111,7 +111,7 @@ void GameScene::colissionsHandling() {
 
 		for (int j = 0; j < bullets.size(); j++) {
 			if (i < asteroids.size() && Object::colissionObjectObject(*asteroids[i], *bullets[j])) {
-				asteroids[i]->AsteroidBreak(App::getDisplayWidth(), App::getDisplayHeight(), asteroids, radiusAvailable, score);
+				asteroids[i]->AsteroidBreak(asteroids, radiusAvailable, score);
 				delete asteroids[i];
 				delete bullets[j];
 				asteroids.erase(asteroids.begin() + i);

@@ -8,14 +8,15 @@ struct ALLEGRO_DISPLAY;
 struct ALLEGRO_EVENT_QUEUE;
 class Scene;
 
+/// Enumerator ID dostêpnych scen.
 enum class sceneIDs {
 	INVALID,
 	GAME,
-	MENU,
-	GAME_END,
-	HIGHSCORE
+	MENU
 };
 
+/// Singleton aplikacji.
+/// Zarz¹dza oknem, pêtl¹, oraz zmian¹ scen.
 class App {
 private:
 	static App instance;
@@ -43,18 +44,30 @@ private:
 	void render(double lag) const;
 	void fpsIndicator();
 
-public:
-	static App& getInstance();
 	App(App const& app) = delete;
 	App const& operator=(App const& app) = delete;
 	App(App&& app) = delete;
 	App const& operator=(App&& app) = delete;
 
+public:
+	/// Zwraca referencjê do instancji.
+	static App& getInstance();
+
+	/// Zwraca szerokoœæ okna w pikselach.
 	static unsigned int getDisplayWidth();
+	/// Zwraca wysokoœæ okna w pikselach.
 	static unsigned int getDisplayHeight();
 
+	/// Ustala nastêpn¹ scene.
+	/// Do zmiany nie zachodzi po zakoñczeniu siê aktualnej pêtli.
+	/// @param nextScene id sceny nastêpnej.
+	/// @see sceneIDs.
 	void setNextScene(sceneIDs nextScene);
 
+	/// Uaktywnia pêtlê singletonu.
+	/// Efektem jest otworzenie aplikacji.
 	void run();
+	/// Zaktrzymuje pêtlê singletonu.
+	/// Efektem jest zamkniêcie aplikacji.
 	void stop();
 };

@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Asteroids: Dokumentacja pliku Asteroids/src/GameScene.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Asteroids<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Gra asteroid - Projekt PŚk PwjC2</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_game_scene_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definicje</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja pliku GameScene.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_game_scene_8h_source.html">GameScene.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_app_8h_source.html">App.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_player_8h_source.html">Player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_asteroid_8h_source.html">Asteroid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_bullet_8h_source.html">Bullet.h</a>&quot;</code><br />
+<code>#include &quot;allegro5/allegro_font.h&quot;</code><br />
+<code>#include &quot;allegro5/allegro_ttf.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Definicje</h2></td></tr>
+<tr class="memitem:a4abfaa2e081e2205c80eba889d94ebd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_game_scene_8cpp.html#a4abfaa2e081e2205c80eba889d94ebd0">STARTING_LIVES</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a4abfaa2e081e2205c80eba889d94ebd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dc93a1b9bd8fd360b9671985c6b291d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_game_scene_8cpp.html#a0dc93a1b9bd8fd360b9671985c6b291d">MAX_TOTAL_RADIUS</a>&#160;&#160;&#160;1000</td></tr>
+<tr class="separator:a0dc93a1b9bd8fd360b9671985c6b291d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e3fc1b793c3768fce5f293792a1a23b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_game_scene_8cpp.html#a3e3fc1b793c3768fce5f293792a1a23b">NEW_ASTEROID_TIMER</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a3e3fc1b793c3768fce5f293792a1a23b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3cb9f33ad33ac0da81bfc711f1f88dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_game_scene_8cpp.html#ab3cb9f33ad33ac0da81bfc711f1f88dd">MIN_NO_ASTEROIDS</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ab3cb9f33ad33ac0da81bfc711f1f88dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2063efdf35cb90875c2a5f4edfd91629"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_game_scene_8cpp.html#a2063efdf35cb90875c2a5f4edfd91629">START_NO_ASTEROIDS</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a2063efdf35cb90875c2a5f4edfd91629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja definicji</h2>
+<a id="a0dc93a1b9bd8fd360b9671985c6b291d" name="a0dc93a1b9bd8fd360b9671985c6b291d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dc93a1b9bd8fd360b9671985c6b291d">&#9670;&#160;</a></span>MAX_TOTAL_RADIUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_TOTAL_RADIUS&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3cb9f33ad33ac0da81bfc711f1f88dd" name="ab3cb9f33ad33ac0da81bfc711f1f88dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3cb9f33ad33ac0da81bfc711f1f88dd">&#9670;&#160;</a></span>MIN_NO_ASTEROIDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN_NO_ASTEROIDS&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e3fc1b793c3768fce5f293792a1a23b" name="a3e3fc1b793c3768fce5f293792a1a23b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e3fc1b793c3768fce5f293792a1a23b">&#9670;&#160;</a></span>NEW_ASTEROID_TIMER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NEW_ASTEROID_TIMER&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2063efdf35cb90875c2a5f4edfd91629" name="a2063efdf35cb90875c2a5f4edfd91629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2063efdf35cb90875c2a5f4edfd91629">&#9670;&#160;</a></span>START_NO_ASTEROIDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define START_NO_ASTEROIDS&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4abfaa2e081e2205c80eba889d94ebd0" name="a4abfaa2e081e2205c80eba889d94ebd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4abfaa2e081e2205c80eba889d94ebd0">&#9670;&#160;</a></span>STARTING_LIVES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STARTING_LIVES&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_fa7062cc1bc805831dd5a05a3aa69e55.html">Asteroids</a></li><li class="navelem"><a class="el" href="dir_086a4fce6c8a4bebde26b34eb8706eb6.html">src</a></li><li class="navelem"><a class="el" href="_game_scene_8cpp.html">GameScene.cpp</a></li>
+    <li class="footer">Wygenerowano przez <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>
